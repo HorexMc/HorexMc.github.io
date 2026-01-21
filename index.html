@@ -1,103 +1,230 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HorexMc Store</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS يبدأ هنا */
+        :root {
+            --primary-color: #ff4d4d; /* اللون الأحمر المميز في الصورة */
+            --bg-dark: #121212;
+            --box-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
         body {
             margin: 0;
-            overflow: hidden; /* يمنع ظهور أشرطة التمرير إذا تجاوزت الخلفية الشاشة */
-            font-family: 'Orbitron', sans-serif; /* خط تقني للمظهر */
-            color: #fff; /* لون النص الافتراضي أبيض */
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+        }
+
+        /* الجزء العلوي (الهيدر) مع الخلفية الضبابية */
+        .header {
+            position: relative;
+            height: 350px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(18,18,18,1)), 
+                        url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* خلفية ماينكرافت افتراضية */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 20px;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .info-box h3 { margin: 0; font-size: 1.2rem; }
+        .info-box p { color: var(--primary-color); margin: 5px 0; cursor: pointer; }
+
+        .logo { width: 100px; height: auto; }
+
+        /* أزرار التنقل الوسطى */
+        .main-nav {
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* يجعل الصفحة تأخذ كامل الارتفاع */
-            background: linear-gradient(45deg, #000080, #0000cd, #4169e1, #6495ed); /* تدرج أزرق داكن */
-            background-size: 400% 400%; /* حجم كبير للخلفية للتأثير المتحرك */
-            animation: gradientAnimation 15s ease infinite; /* حركة الخلفية */
+            gap: 40px;
+            padding: 20px 0;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid #333;
         }
 
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            text-align: center;
-            position: relative;
-            z-index: 2; /* للتأكد أن المحتوى يظهر فوق الخلفية المتحركة */
-        }
-
-        .store-name {
-            font-size: 5em; /* حجم كبير للنص */
+        .nav-item {
+            color: white;
+            text-decoration: none;
             font-weight: bold;
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff; /* تأثير توهج أزرق فاتح */
-            color: #e0f7fa; /* لون النص أزرق فاتح جداً */
-            animation: electricityEffect 1.5s ease-in-out infinite alternate; /* حركة تأثير الكهرباء */
-            letter-spacing: 5px; /* تباعد الأحرف */
+            font-size: 1.1rem;
+            transition: 0.3s;
         }
 
-        @keyframes electricityEffect {
-            0% {
-                text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
-                transform: scale(1);
-            }
-            50% {
-                text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
-                transform: scale(1.02);
-                color: #b3e5fc; /* يتغير اللون قليلاً عند التوهج */
-            }
-            100% {
-                text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
-                transform: scale(1);
-            }
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary-color);
         }
 
-        .slogan {
-            font-size: 1.5em;
-            margin-top: 20px;
-            opacity: 0.8;
-            animation: fadeIn 2s ease-out forwards;
+        /* الحاوية الرئيسية (العمودين) */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            gap: 20px;
+            padding: 0 20px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 0.8; transform: translateY(0); }
+        /* القائمة الجانبية */
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* لإنشاء تأثير "الكهرباء" المتوهجة المحيطة بالصفحة (اختياري) */
-        .electricity-border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* لا يتفاعل مع الماوس */
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.7), 0 0 100px rgba(0, 255, 255, 0.5), 0 0 150px rgba(0, 255, 255, 0.3);
-            animation: borderGlow 3s ease infinite alternate;
-            z-index: 1; /* يظهر خلف المحتوى لكن فوق الخلفية */
+        .side-box {
+            background-color: var(--box-bg);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        @keyframes borderGlow {
-            0% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3); }
-            100% { box-shadow: 0 0 60px rgba(0, 255, 255, 0.8), 0 0 120px rgba(0, 255, 255, 0.6); }
+        .side-box-header {
+            background-color: #252525;
+            padding: 15px;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        /* نهاية CSS */
+        .side-box-content {
+            padding: 10px 0;
+        }
+
+        .side-link {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .side-link:hover {
+            background-color: #252525;
+            color: white;
+            padding-right: 25px;
+        }
+
+        /* محتوى المتجر الرئيسي */
+        .main-content {
+            flex: 3;
+            background-color: var(--box-bg);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .highlight { color: white; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .header-content { flex-direction: column; gap: 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="electricity-border"></div>
+
+    <header class="header">
+        <div class="top-nav">
+            <div style="flex: 1;"></div>
+            <button class="login-btn">تسجيل الدخول</button>
+        </div>
+        
+        <div class="header-content">
+            <div class="info-box">
+                <h3>PLAY.HOREXMC.NET</h3>
+                <p>اضغط للنسخ</p>
+            </div>
+            
+            <img src="https://i.imgur.com/8kC6m6B.png" alt="Logo" class="logo"> <div class="info-box">
+                <h3>انضم إلى الديسكورد</h3>
+                <p>اضغط للانضمام</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="#" class="nav-item">الرتب</a>
+        <a href="#" class="nav-item">الكلانات</a>
+        <a href="#" class="nav-item active">REDSTONEPVP</a>
+    </nav>
+
     <div class="container">
-        <h1 class="store-name">HorexMc</h1>
-        <p class="slogan">متجرك لعالم من الابتكار</p>
+        <aside class="sidebar">
+            <div class="side-box">
+                <div class="side-box-header">الرئيسية</div>
+                <div class="side-box-content">
+                    <a href="#" class="side-link">الرتب</a>
+                    <a href="#" class="side-link">الكلانات</a>
+                    <a href="#" class="side-link">RedstonePvP</a>
+                </div>
+            </div>
+
+            <div class="side-box">
+                <div class="side-box-header" style="background-color: #2e3b2e; color: #8ec07c;">أفضل العملاء</div>
+                <div class="side-box-content" style="text-align: center; padding: 20px;">
+                    <img src="https://minotar.net/helm/Steve/50" alt="top">
+                    <p>قريباً...</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>متجر شبكة HorexMc</h2>
+            <p>
+                مرحباً بك في متجر <span class="highlight">HorexMc Network</span> الرسمي! 
+                هنا يمكنك ترقية تجربتك في خوادمنا من خلال الحصول على <span class="highlight">الرتب، العناصر الخاصة، الحيوانات الأليفة،</span> والمميزات الفريدة.
+            </p>
+            <p>
+                تم تصميم كل حزمة بعناية لتوفير <span class="highlight">مزايا ممتعة</span> مع الحفاظ على توازن اللعبة لجميع اللاعبين.
+            </p>
+            <hr style="border: 0; border-top: 1px solid #333; margin: 40px 0;">
+            <h3>الدعم والتواصل</h3>
+            <p>إذا واجهت أي مشكلة، لا تتردد في التواصل معنا عبر الديسكورد.</p>
+        </main>
     </div>
+
 </body>
 </html>
