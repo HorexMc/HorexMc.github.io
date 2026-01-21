@@ -3,268 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HorexMC Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>HorexMC Store - Ultimate PvP Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+        /* ===== ROOT VARIABLES ===== */
         :root {
-            --primary-dark: #0a0a0a;
-            --secondary-dark: #121212;
-            --accent-blue: #1a73e8;
-            --accent-light-blue: #4285f4;
-            --electric-blue: #00b0ff;
-            --neon-blue: #00f3ff;
-            --accent-silver: #b0bec5;
-            --accent-white: #ffffff;
-            --accent-gray: #2d2d2d;
-            --hover-blue: #1557b0;
-            --success-color: #00c853;
-            --price-color: #ffd700;
-            --glow-blue: rgba(0, 240, 255, 0.5);
+            /* Color Palette */
+            --primary-black: #0a0a0a;
+            --secondary-black: #121212;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2d2d2d;
+            --light-gray: #3a3a3a;
+            
+            /* Accent Colors */
+            --electric-blue: #0066ff;
+            --neon-blue: #00ccff;
+            --cyber-purple: #9d00ff;
+            --matrix-green: #00ff9d;
+            --gold-yellow: #ffd700;
+            --diamond-blue: #4ee2ec;
+            --emerald-green: #00ff88;
+            --special-red: #ff3366;
+            
+            /* UI Colors */
+            --text-white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-gray: #b0b0b0;
+            --text-muted: #888888;
+            
+            /* Effects */
+            --glow-blue: rgba(0, 102, 255, 0.5);
+            --glow-neon: rgba(0, 204, 255, 0.6);
+            --glow-purple: rgba(157, 0, 255, 0.5);
+            --glow-green: rgba(0, 255, 157, 0.5);
+            --glow-gold: rgba(255, 215, 0, 0.5);
+            
+            /* Shadows */
+            --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 20px rgba(0, 204, 255, 0.4);
+            
+            /* Gradients */
+            --gradient-dark: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+            --gradient-blue: linear-gradient(135deg, var(--electric-blue) 0%, var(--neon-blue) 100%);
+            --gradient-purple: linear-gradient(135deg, var(--cyber-purple) 0%, #ff00cc 100%);
+            --gradient-green: linear-gradient(135deg, var(--matrix-green) 0%, #00ffcc 100%);
+            --gradient-gold: linear-gradient(135deg, var(--gold-yellow) 0%, #ffaa00 100%);
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Border Radius */
+            --radius-small: 8px;
+            --radius-medium: 12px;
+            --radius-large: 20px;
+            --radius-xlarge: 30px;
+            --radius-circle: 50%;
+            
+            /* Spacing */
+            --space-xs: 5px;
+            --space-sm: 10px;
+            --space-md: 20px;
+            --space-lg: 30px;
+            --space-xl: 50px;
+            --space-xxl: 80px;
         }
 
+        /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--accent-white);
+            background: var(--primary-black);
+            color: var(--text-white);
             min-height: 100vh;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 102, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(157, 0, 255, 0.05) 0%, transparent 50%);
         }
 
-        /* Animated Background */
-        .background-animation {
+        ::selection {
+            background: var(--electric-blue);
+            color: var(--text-white);
+            text-shadow: none;
+        }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 14px;
+            height: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-black);
+            border-radius: var(--radius-large);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-blue);
+            border-radius: var(--radius-large);
+            border: 3px solid var(--secondary-black);
+            box-shadow: var(--shadow-glow);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-purple);
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.5);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: var(--primary-black);
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        .cyber-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background: linear-gradient(
-                135deg,
-                var(--primary-dark) 0%,
-                #0a0a1a 25%,
-                var(--secondary-dark) 50%,
-                #1a1a2a 75%,
-                var(--primary-dark) 100%
-            );
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            z-index: -10;
             overflow: hidden;
         }
 
-        .particle {
+        .grid-overlay {
             position: absolute;
-            background: radial-gradient(circle, var(--neon-blue), transparent);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translateY(-100px) translateX(100px) rotate(90deg);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(-200px) translateX(0) rotate(180deg);
-                opacity: 0.3;
-            }
-            75% {
-                transform: translateY(-100px) translateX(-100px) rotate(270deg);
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(0) translateX(0) rotate(360deg);
-                opacity: 0.3;
-            }
-        }
-
-        /* Animated Grid */
-        .grid-lines {
-            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
             background-image: 
-                linear-gradient(rgba(0, 176, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 176, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            opacity: 0.3;
+                linear-gradient(rgba(0, 102, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 40s linear infinite;
         }
 
         @keyframes gridMove {
             0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+            100% { background-position: 60px 60px; }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
 
-        ::-webkit-scrollbar-track {
-            background: rgba(10, 10, 10, 0.8);
-            border-radius: 10px;
+        .particle {
+            position: absolute;
+            border-radius: var(--radius-circle);
+            opacity: 0.4;
+            filter: blur(1px);
+            animation: floatParticle 20s infinite linear;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--electric-blue), var(--neon-blue));
-            border-radius: 10px;
-            border: 2px solid rgba(10, 10, 10, 0.8);
-            box-shadow: 0 0 10px var(--neon-blue);
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(100px, -150px) rotate(90deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(200px, 50px) rotate(180deg);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translate(50px, 150px) rotate(270deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+                opacity: 0.3;
+            }
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--neon-blue), var(--electric-blue));
-            box-shadow: 0 0 15px var(--neon-blue);
+        .light-beam {
+            position: absolute;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.1), transparent);
+            animation: beamSweep 15s infinite linear;
+            transform-origin: top left;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 10px 40px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 176, 255, 0.2);
+        @keyframes beamSweep {
+            0% { transform: rotate(0deg) translateX(-300px); }
+            100% { transform: rotate(360deg) translateX(-300px); }
+        }
+
+        /* ===== TOP NAVIGATION ===== */
+        .cyber-nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
+            height: 80px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0, 102, 255, 0.3);
             z-index: 1000;
-            height: 70px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-xl);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            transition: all var(--transition-normal);
         }
 
-        .user-profile {
+        .cyber-nav.scrolled {
+            height: 70px;
+            background: rgba(10, 10, 10, 0.98);
+            border-bottom-color: var(--electric-blue);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: var(--space-md);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-blue);
+            border-radius: var(--radius-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-white);
+            box-shadow: var(--shadow-glow);
+            animation: logoPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: var(--shadow-glow);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(0, 204, 255, 0.7);
+            }
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
             position: relative;
         }
 
-        #loginBtn {
-            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
-            color: var(--accent-white);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .logo-text::after {
+            content: 'STORE';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlitch 5s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes textGlitch {
+            0%, 100% { opacity: 0.5; transform: translateX(0); }
+            25% { opacity: 0.7; transform: translateX(-2px); }
+            50% { opacity: 0.3; transform: translateX(2px); }
+            75% { opacity: 0.6; transform: translateX(-1px); }
+        }
+
+        .user-panel {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            gap: var(--space-md);
+        }
+
+        .user-display {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: var(--radius-medium);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            cursor: pointer;
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
         }
 
-        #loginBtn::before {
+        .user-display::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.2), transparent);
+            transition: var(--transition-normal);
         }
 
-        #loginBtn:hover::before {
+        .user-display:hover::before {
             left: 100%;
         }
 
-        #loginBtn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
-            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
-        }
-
-        .username-display {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 25px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 176, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .username-display:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--electric-blue);
-            box-shadow: 0 0 15px rgba(0, 176, 255, 0.3);
+        .user-display:hover {
+            background: rgba(0, 102, 255, 0.2);
+            border-color: var(--neon-blue);
+            box-shadow: var(--shadow-glow);
             transform: translateY(-2px);
         }
 
-        #usernameText {
-            font-weight: 500;
-            font-size: 14px;
-            color: var(--accent-white);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        .user-icon {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
         }
 
-        /* Profile Modal */
-        .profile-modal {
-            display: none;
+        #usernameText {
+            font-weight: 600;
+            color: var(--text-white);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .user-menu {
             position: absolute;
-            top: 55px;
+            top: 100%;
             right: 0;
-            background: rgba(18, 18, 18, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 15px;
-            padding: 25px;
+            margin-top: var(--space-sm);
+            background: rgba(18, 18, 18, 0.98);
+            backdrop-filter: blur(30px);
+            border-radius: var(--radius-medium);
+            padding: var(--space-md);
             min-width: 280px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(0, 176, 255, 0.3);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            display: none;
+            animation: slideDown 0.3s ease;
             z-index: 1001;
         }
 
-        .profile-modal.active {
-            display: block;
-            animation: modalSlide 0.3s ease;
-        }
-
-        @keyframes modalSlide {
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-15px) scale(0.95);
+                transform: translateY(-10px) scale(0.95);
             }
             to {
                 opacity: 1;
@@ -272,401 +384,428 @@
             }
         }
 
-        .username-edit {
+        .user-menu.active {
+            display: block;
+        }
+
+        .menu-header {
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .menu-header h4 {
+            color: var(--neon-blue);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .menu-section {
+            margin-bottom: var(--space-md);
+        }
+
+        .menu-input-group {
             display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
         }
 
         #usernameInput {
             flex: 1;
-            padding: 12px 18px;
-            border: 1px solid rgba(0, 176, 255, 0.4);
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            color: var(--accent-white);
-            font-size: 14px;
-            transition: all 0.3s ease;
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: var(--radius-small);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: all var(--transition-normal);
         }
 
         #usernameInput:focus {
             outline: none;
             border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
         }
 
         #saveUsername {
-            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
-            color: white;
+            background: var(--gradient-blue);
+            color: var(--text-white);
             border: none;
-            padding: 12px 20px;
-            border-radius: 10px;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-small);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transition: all var(--transition-normal);
+            min-width: 80px;
         }
 
         #saveUsername:hover {
-            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            background: var(--gradient-purple);
             transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(157, 0, 255, 0.4);
         }
 
-        /* Main Container */
-        .container {
-            display: flex;
-            min-height: calc(100vh - 70px);
-            margin-top: 70px;
+        .menu-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
         }
 
-        /* Sidebar */
-        .sidebar {
-            width: 300px;
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(15px);
-            padding: 35px 25px;
-            border-right: 1px solid rgba(0, 176, 255, 0.2);
-            position: fixed;
-            height: calc(100vh - 70px);
-            overflow-y: auto;
-            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .sidebar:hover {
-            background: rgba(18, 18, 18, 0.95);
-            border-right-color: rgba(0, 176, 255, 0.4);
-        }
-
-        .logo-container {
+        .stat-item {
             text-align: center;
-            margin-bottom: 45px;
-            position: relative;
+            padding: var(--space-sm);
+            background: rgba(0, 102, 255, 0.05);
+            border-radius: var(--radius-small);
+            border: 1px solid rgba(0, 102, 255, 0.1);
         }
 
-        .logo {
-            width: 140px;
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.7));
-            animation: logoGlow 3s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { 
-                filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.7));
-                transform: scale(1);
-            }
-            50% { 
-                filter: drop-shadow(0 0 25px rgba(0, 240, 255, 1));
-                transform: scale(1.05);
-            }
-        }
-
-        .logo-spark {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            opacity: 0.5;
-        }
-
-        .logo-spark::before,
-        .logo-spark::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: var(--neon-blue);
-            border-bottom-color: var(--electric-blue);
-            animation: spin 8s linear infinite;
-        }
-
-        .logo-spark::after {
-            width: 80%;
-            height: 80%;
-            animation: spinReverse 6s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        @keyframes spinReverse {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(-360deg); }
-        }
-
-        .server-info {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 176, 255, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .server-info:hover {
-            border-color: var(--electric-blue);
-            box-shadow: 0 0 20px rgba(0, 176, 255, 0.2);
-        }
-
-        .server-ip {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(0, 176, 255, 0.3);
-        }
-
-        .server-ip span {
-            font-family: 'Courier New', monospace;
+        .stat-value {
             color: var(--neon-blue);
-            font-size: 14px;
-            font-weight: 500;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.75rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .copy-btn {
-            background: transparent;
-            border: 1px solid var(--electric-blue);
-            color: var(--electric-blue);
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        /* ===== SIDEBAR NAVIGATION ===== */
+        .cyber-sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(20px);
+            border-right: 2px solid rgba(0, 102, 255, 0.2);
+            z-index: 900;
+            padding: var(--space-xl) var(--space-lg);
+            overflow-y: auto;
+            transition: all var(--transition-normal);
+            box-shadow: 10px 0 40px rgba(0, 0, 0, 0.5);
         }
 
-        .copy-btn:hover {
-            background: var(--electric-blue);
-            color: var(--primary-dark);
-            box-shadow: 0 0 15px var(--electric-blue);
-            transform: scale(1.05);
-        }
-
-        .discord-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #5865F2, #7289DA);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .server-info-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: var(--radius-large);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            border: 1px solid rgba(0, 102, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
 
-        .discord-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.4);
-        }
-
-        .nav-menu {
-            margin-top: 35px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            padding: 18px 25px;
-            color: var(--accent-silver);
-            text-decoration: none;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            transition: all 0.4s ease;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
-            transition: 0.5s;
-        }
-
-        .nav-item:hover::before {
-            left: 100%;
-        }
-
-        .nav-item:hover {
-            background: rgba(0, 176, 255, 0.1);
-            color: var(--accent-white);
-            transform: translateX(8px);
-            border-left: 3px solid var(--electric-blue);
-        }
-
-        .nav-item.active {
-            background: linear-gradient(90deg, rgba(0, 176, 255, 0.15), transparent);
-            color: var(--neon-blue);
-            border-left: 3px solid var(--neon-blue);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-item i {
-            width: 24px;
-            text-align: center;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item:hover i {
-            color: var(--neon-blue);
-            transform: scale(1.2);
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            margin-left: 300px;
-            padding: 45px;
-            min-height: calc(100vh - 70px);
-            position: relative;
-        }
-
-        .page {
-            display: none;
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .page-header {
-            margin-bottom: 45px;
-            text-align: center;
-            position: relative;
-        }
-
-        .page-header h1 {
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-            position: relative;
-            display: inline-block;
-        }
-
-        .page-header h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            border-radius: 3px;
-        }
-
-        .page-header p {
-            color: var(--accent-silver);
-            font-size: 1.2rem;
-            max-width: 650px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Home Page */
-        .welcome-section {
-            background: linear-gradient(135deg, rgba(0, 176, 255, 0.1), rgba(0, 243, 255, 0.05));
-            border-radius: 25px;
-            padding: 60px;
-            text-align: center;
-            margin-bottom: 55px;
-            border: 1px solid rgba(0, 176, 255, 0.2);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .welcome-section::before {
+        .server-info-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.05), transparent);
+            background: linear-gradient(45deg, transparent, rgba(0, 204, 255, 0.05), transparent);
             transform: translateX(-100%);
-            transition: transform 0.6s ease;
         }
 
-        .welcome-section:hover::before {
-            transform: translateX(100%);
+        .server-info-card:hover::before {
+            animation: shineEffect 1s ease;
         }
 
-        .welcome-section h2 {
-            font-size: 2.4rem;
-            margin-bottom: 25px;
-            color: var(--accent-white);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        @keyframes shineEffect {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
-        .welcome-section p {
-            color: var(--accent-silver);
+        .server-ip-display {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: var(--radius-medium);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            border: 1px solid rgba(0, 102, 255, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ip-text {
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .copy-ip-btn {
+            background: transparent;
+            border: 1px solid var(--electric-blue);
+            color: var(--electric-blue);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-small);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .copy-ip-btn:hover {
+            background: var(--electric-blue);
+            color: var(--text-white);
+            box-shadow: 0 0 15px var(--glow-blue);
+        }
+
+        .discord-connect {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: var(--text-white);
+            text-decoration: none;
+            padding: var(--space-md);
+            border-radius: var(--radius-medium);
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-connect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition-normal);
+        }
+
+        .discord-connect:hover::before {
+            left: 100%;
+        }
+
+        .discord-connect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.4);
+        }
+
+        .nav-section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .section-title {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-sm);
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-sm);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            color: var(--text-gray);
+            text-decoration: none;
+            border-radius: var(--radius-medium);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.1), transparent);
+            transition: var(--transition-normal);
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--text-white);
+            transform: translateX(5px);
+            border-left: 3px solid var(--electric-blue);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(90deg, rgba(0, 102, 255, 0.2), transparent);
+            color: var(--neon-blue);
+            border-left: 3px solid var(--neon-blue);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: all var(--transition-normal);
+        }
+
+        .nav-link:hover .nav-icon {
+            color: var(--neon-blue);
+            transform: scale(1.2);
+        }
+
+        .nav-link.active .nav-icon {
+            color: var(--neon-blue);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            margin-left: 280px;
+            padding: 100px var(--space-xl) var(--space-xxl);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
+            margin-bottom: var(--space-xxl);
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlitch 6s infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes titleGlitch {
+            0%, 100% { opacity: 0.8; transform: translate(0); }
+            5% { opacity: 0.6; transform: translate(-1px, 1px); }
+            10% { opacity: 0.9; transform: translate(1px, -1px); }
+            15% { opacity: 0.7; transform: translate(-1px, -1px); }
+            20% { opacity: 1; transform: translate(1px, 1px); }
+            25%, 75% { opacity: 0.8; transform: translate(0); }
+        }
+
+        .page-subtitle {
+            color: var(--text-light);
             font-size: 1.2rem;
-            max-width: 750px;
-            margin: 0 auto 35px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ===== HOME PAGE ===== */
+        .welcome-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(157, 0, 255, 0.05));
+            border-radius: var(--radius-xlarge);
+            padding: var(--space-xxl);
+            margin-bottom: var(--space-xxl);
+            border: 2px solid rgba(0, 102, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 204, 255, 0.1) 0%, transparent 70%);
+            animation: rotateGlow 20s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-lg);
+            color: var(--text-white);
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .welcome-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto var(--space-xl);
             line-height: 1.8;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-top: 45px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 18px;
-            padding: 35px 25px;
+            border-radius: var(--radius-large);
+            padding: var(--space-lg);
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all var(--transition-normal);
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
@@ -679,205 +818,251 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(0, 204, 255, 0.1), transparent);
             transform: translateX(-100%);
         }
 
         .stat-card:hover::before {
-            animation: shine 1s ease;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            animation: shineEffect 0.8s ease;
         }
 
         .stat-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             border-color: var(--electric-blue);
-            background: rgba(0, 176, 255, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: rgba(0, 102, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .stat-card i {
-            font-size: 2.8rem;
-            color: var(--electric-blue);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover i {
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
             color: var(--neon-blue);
-            transform: scale(1.2);
+            transition: all var(--transition-normal);
         }
 
-        .stat-card h3 {
+        .stat-card:hover .stat-icon {
+            color: var(--matrix-green);
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-xs);
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ===== KITS PAGE ===== */
+        .kits-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .kit-category {
+            margin-bottom: var(--space-xxl);
+        }
+
+        .category-header {
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid rgba(0, 102, 255, 0.3);
+            position: relative;
+        }
+
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--gradient-blue);
+        }
+
+        .category-title {
             font-size: 2.2rem;
-            color: var(--accent-white);
-            margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
         }
 
-        .stat-card p {
-            color: var(--accent-silver);
-            font-size: 1rem;
+        .category-icon {
+            color: var(--neon-blue);
+            font-size: 1.8rem;
         }
 
-        /* Ranks Page */
-        .ranks-grid {
+        .category-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        .kits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-            margin-top: 45px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
         }
 
-        .rank-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(176, 190, 197, 0.03));
-            border-radius: 22px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .kit-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.3));
+            border-radius: var(--radius-xlarge);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
         }
 
-        .rank-card::before {
+        .kit-card::before {
             content: '';
             position: absolute;
             top: -2px;
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, var(--electric-blue), var(--neon-blue), var(--electric-blue));
+            background: var(--gradient-blue);
+            border-radius: var(--radius-xlarge);
             z-index: -1;
-            border-radius: 24px;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity var(--transition-normal);
         }
 
-        .rank-card:hover::before {
+        .kit-card:hover::before {
             opacity: 1;
-            animation: borderGlow 2s linear infinite;
+            animation: borderPulse 2s infinite;
         }
 
-        @keyframes borderGlow {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        @keyframes borderPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
-        .rank-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        .kit-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
         }
 
-        .rank-icon {
-            font-size: 3.8rem;
-            margin-bottom: 25px;
-            height: 90px;
+        .kit-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .kit-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s ease;
+            transition: all var(--transition-normal);
         }
 
-        .rank-card:hover .rank-icon {
-            transform: scale(1.1);
+        .kit-card:hover .kit-icon {
+            transform: scale(1.2);
         }
 
-        .gold-rank { 
-            color: #FFD700;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        }
-        .diamond-rank { 
-            color: #b9f2ff;
-            text-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
-        }
-        .emerald-rank { 
-            color: #50C878;
-            text-shadow: 0 0 15px rgba(80, 200, 120, 0.5);
-        }
-        .special-rank { 
-            color: #9b30ff;
-            text-shadow: 0 0 15px rgba(155, 48, 255, 0.5);
-        }
-
-        .rank-card h3 {
-            font-size: 1.9rem;
-            margin-bottom: 18px;
-            color: var(--accent-white);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-        }
-
-        .rank-price {
-            font-size: 2.2rem;
-            color: var(--price-color);
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        .kit-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
             position: relative;
             display: inline-block;
         }
 
-        .rank-price::after {
+        .gold-kit .kit-title { color: var(--gold-yellow); text-shadow: 0 0 20px var(--glow-gold); }
+        .diamond-kit .kit-title { color: var(--diamond-blue); text-shadow: 0 0 20px var(--glow-blue); }
+        .emerald-kit .kit-title { color: var(--emerald-green); text-shadow: 0 0 20px var(--glow-green); }
+        .special-kit .kit-title { color: var(--special-red); text-shadow: 0 0 20px rgba(255, 51, 102, 0.5); }
+
+        .kit-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: var(--space-lg);
+            color: var(--text-white);
+            text-shadow: 0 0 10px currentColor;
+            position: relative;
+            display: inline-block;
+        }
+
+        .kit-price::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--price-color), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: currentColor;
+            border-radius: 3px;
+            opacity: 0.6;
         }
 
-        .rank-features {
+        .kit-features {
             list-style: none;
-            margin-bottom: 30px;
-            text-align: left;
+            margin-bottom: var(--space-xl);
         }
 
-        .rank-features li {
-            padding: 10px 0;
-            color: var(--accent-silver);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
+        .feature-item {
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-medium);
+            border-left: 4px solid var(--electric-blue);
+            transition: all var(--transition-normal);
         }
 
-        .rank-features li:hover {
-            color: var(--accent-white);
+        .feature-item:hover {
+            background: rgba(0, 102, 255, 0.1);
+            border-left-color: var(--neon-blue);
             transform: translateX(5px);
         }
 
-        .rank-features li i {
-            color: var(--electric-blue);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .rank-features li:hover i {
+        .feature-icon {
             color: var(--neon-blue);
-            transform: scale(1.2);
+            margin-right: var(--space-sm);
+            font-size: 0.9rem;
         }
 
-        .buy-btn {
-            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
-            color: white;
-            border: none;
-            padding: 18px 35px;
-            border-radius: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s ease;
+        .feature-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .buy-kit-btn {
             width: 100%;
+            padding: var(--space-lg);
+            background: var(--gradient-blue);
+            color: var(--text-white);
+            border: none;
+            border-radius: var(--radius-large);
+            font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .buy-btn::before {
+        .buy-kit-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -885,296 +1070,612 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            transition: var(--transition-normal);
         }
 
-        .buy-btn:hover::before {
+        .buy-kit-btn:hover::before {
             left: 100%;
         }
 
-        .buy-btn:hover {
+        .buy-kit-btn:hover {
+            background: var(--gradient-purple);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.5);
-            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
+            box-shadow: 0 15px 30px rgba(157, 0, 255, 0.4);
         }
 
-        .buy-btn:disabled {
-            background: var(--accent-gray);
+        .buy-kit-btn:disabled {
+            background: var(--medium-gray);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
 
-        /* Guilds Page */
+        /* ===== PVP KITS ===== */
+        .pvp-kit .kit-icon {
+            color: var(--special-red);
+            animation: pulseRed 2s infinite;
+        }
+
+        @keyframes pulseRed {
+            0%, 100% { 
+                color: var(--special-red);
+                text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+            }
+            50% { 
+                color: #ff0066;
+                text-shadow: 0 0 30px rgba(255, 0, 102, 0.7);
+            }
+        }
+
+        .pvp-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+
+        .pvp-feature {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            border-radius: var(--radius-medium);
+            padding: var(--space-md);
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .pvp-feature:hover {
+            background: rgba(255, 51, 102, 0.2);
+            border-color: var(--special-red);
+            transform: translateY(-3px);
+        }
+
+        .pvp-feature-icon {
+            color: var(--special-red);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .pvp-feature-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .pvp-feature-value {
+            color: var(--special-red);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        /* ===== GUILDS PAGE ===== */
         .guilds-container {
-            max-width: 850px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .guild-card {
-            background: linear-gradient(135deg, rgba(0, 176, 255, 0.15), rgba(0, 243, 255, 0.08));
-            border-radius: 25px;
-            padding: 50px;
-            text-align: center;
-            border: 1px solid rgba(0, 176, 255, 0.2);
-            margin-bottom: 35px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(157, 0, 255, 0.1));
+            border-radius: var(--radius-xlarge);
+            padding: var(--space-xxl);
+            margin-bottom: var(--space-xl);
+            border: 2px solid rgba(0, 102, 255, 0.3);
             backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .guild-card:hover {
-            border-color: var(--electric-blue);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transform: translateY(-5px);
+        .guild-card::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(0, 204, 255, 0.1) 0%, transparent 70%);
+            animation: rotateSlow 30s linear infinite;
+        }
+
+        @keyframes rotateSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .guild-icon {
-            font-size: 4.5rem;
+            font-size: 5rem;
             color: var(--electric-blue);
-            margin-bottom: 30px;
-            transition: all 0.4s ease;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .guild-card:hover .guild-icon {
-            color: var(--neon-blue);
-            transform: scale(1.1) rotate(5deg);
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        .guild-card h2 {
-            font-size: 2.4rem;
-            margin-bottom: 18px;
-            color: var(--accent-white);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        .guild-title {
+            font-size: 2.8rem;
+            margin-bottom: var(--space-md);
+            color: var(--text-white);
+            text-align: center;
+            font-weight: 800;
         }
 
-        .guild-card p {
-            color: var(--accent-silver);
+        .guild-description {
+            color: var(--text-light);
             font-size: 1.2rem;
-            margin-bottom: 35px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
             line-height: 1.8;
         }
 
         .guild-price {
-            font-size: 2.8rem;
-            color: var(--price-color);
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        }
-
-        .coming-soon {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(176, 190, 197, 0.03));
-            border-radius: 25px;
-            padding: 50px;
+            font-size: 3rem;
+            color: var(--gold-yellow);
+            font-weight: 900;
+            margin-bottom: var(--space-xl);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            text-shadow: 0 0 20px var(--glow-gold);
         }
 
-        .coming-soon i {
-            font-size: 4.5rem;
-            color: var(--accent-silver);
-            margin-bottom: 25px;
-            opacity: 0.7;
-            animation: pulse 2s infinite;
+        .guild-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
         }
 
-        .coming-soon h2 {
-            font-size: 2.2rem;
-            color: var(--accent-silver);
-            margin-bottom: 15px;
+        .guild-feature {
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: var(--radius-large);
+            padding: var(--space-lg);
+            text-align: center;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            transition: all var(--transition-normal);
         }
 
-        /* Notifications */
-        .notification {
-            position: fixed;
-            bottom: 35px;
-            right: 35px;
-            background: rgba(18, 18, 18, 0.95);
-            border-radius: 15px;
-            padding: 25px 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            border-left: 5px solid var(--electric-blue);
-            display: none;
-            align-items: center;
-            gap: 18px;
-            z-index: 1002;
-            max-width: 450px;
-            animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0, 176, 255, 0.3);
+        .guild-feature:hover {
+            background: rgba(0, 102, 255, 0.2);
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.2);
         }
 
-        .notification.show {
-            display: flex;
+        .guild-feature-icon {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: var(--space-md);
         }
 
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .notification i {
-            color: var(--electric-blue);
-            font-size: 1.8rem;
-            min-width: 30px;
-        }
-
-        .notification-content {
-            flex: 1;
-        }
-
-        .notification h4 {
-            color: var(--accent-white);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+        .guild-feature-title {
+            color: var(--text-white);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-sm);
             font-weight: 600;
         }
 
-        .notification p {
-            color: var(--accent-silver);
+        .guild-feature-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== REDSTONEPVP PAGE ===== */
+        .coming-soon-section {
+            background: linear-gradient(135deg, rgba(157, 0, 255, 0.1), rgba(0, 255, 157, 0.05));
+            border-radius: var(--radius-xlarge);
+            padding: var(--space-xxl);
+            text-align: center;
+            border: 2px solid rgba(157, 0, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-icon {
+            font-size: 6rem;
+            color: var(--cyber-purple);
+            margin-bottom: var(--space-lg);
+            animation: spinPulse 4s infinite linear;
+        }
+
+        @keyframes spinPulse {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .coming-soon-title {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--text-white);
+            font-weight: 800;
+        }
+
+        .coming-soon-text {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.8;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .timer-unit {
+            background: rgba(157, 0, 255, 0.2);
+            border-radius: var(--radius-large);
+            padding: var(--space-lg);
+            min-width: 120px;
+            border: 1px solid rgba(157, 0, 255, 0.4);
+        }
+
+        .timer-value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--matrix-green);
+            margin-bottom: var(--space-xs);
+            text-shadow: 0 0 15px var(--glow-green);
+        }
+
+        .timer-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .features-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-xxl);
+        }
+
+        .preview-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-large);
+            padding: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-normal);
+        }
+
+        .preview-card:hover {
+            background: rgba(0, 255, 157, 0.1);
+            border-color: var(--matrix-green);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .preview-icon {
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            margin-bottom: var(--space-md);
+        }
+
+        .preview-title {
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: var(--space-sm);
+            font-weight: 700;
+        }
+
+        .preview-description {
+            color: var(--text-gray);
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        #closeNotification {
-            color: var(--accent-silver);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 5px;
+        /* ===== NOTIFICATIONS ===== */
+        .notification-system {
+            position: fixed;
+            bottom: var(--space-xl);
+            right: var(--space-xl);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
         }
 
-        #closeNotification:hover {
+        .notification {
+            background: rgba(18, 18, 18, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-large);
+            padding: var(--space-lg);
+            min-width: 350px;
+            max-width: 450px;
+            border-left: 5px solid var(--electric-blue);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            display: none;
+            animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .notification.show {
+            display: block;
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-sm);
+        }
+
+        .notification-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--neon-blue);
-            transform: rotate(90deg);
         }
 
-        /* Responsive Design */
+        .notification-icon {
+            font-size: 1.2rem;
+        }
+
+        .notification-close {
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            padding: var(--space-xs);
+            border-radius: var(--radius-circle);
+        }
+
+        .notification-close:hover {
+            color: var(--text-white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .notification-content {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        .cyber-footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 2px solid rgba(0, 102, 255, 0.3);
+            padding: var(--space-xl);
+            margin-top: var(--space-xxl);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .footer-section {
+            padding: var(--space-lg);
+        }
+
+        .footer-title {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            padding: var(--space-sm) 0;
+            display: block;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .footer-link:hover {
+            color: var(--text-white);
+            transform: translateX(5px);
+        }
+
+        .footer-link-icon {
+            color: var(--electric-blue);
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-circle);
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            text-decoration: none;
+            transition: all var(--transition-normal);
+        }
+
+        .social-link:hover {
+            background: var(--electric-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-xl);
+            margin-top: var(--space-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
-            .sidebar {
-                width: 280px;
+            .cyber-sidebar {
+                width: 250px;
             }
             .main-content {
-                margin-left: 280px;
-                padding: 35px;
+                margin-left: 250px;
+            }
+            .page-title {
+                font-size: 3rem;
             }
         }
 
         @media (max-width: 992px) {
-            .container {
-                flex-direction: column;
+            .cyber-sidebar {
+                transform: translateX(-100%);
+                width: 300px;
             }
-            .sidebar {
-                position: static;
-                width: 100%;
-                height: auto;
-                padding: 25px;
-                margin-bottom: 0;
+            .cyber-sidebar.active {
+                transform: translateX(0);
             }
             .main-content {
                 margin-left: 0;
-                padding: 30px;
+                padding-top: 140px;
             }
-            .top-bar {
-                padding: 10px 25px;
+            .cyber-nav {
+                padding: 0 var(--space-lg);
             }
-            .welcome-section {
-                padding: 40px 25px;
+            .mobile-menu-btn {
+                display: block;
             }
-            .page-header h1 {
-                font-size: 2.2rem;
+            .kits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-preview {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .ranks-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
+            .cyber-nav {
+                height: 70px;
+                padding: 0 var(--space-md);
             }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+            .cyber-sidebar {
+                top: 70px;
+                height: calc(100vh - 70px);
             }
-            .guild-card {
-                padding: 30px 20px;
+            .main-content {
+                padding: 100px var(--space-md) var(--space-xl);
+            }
+            .page-title {
+                font-size: 2.5rem;
             }
             .welcome-section {
-                padding: 30px 20px;
+                padding: var(--space-xl);
             }
-            .main-nav {
-                gap: 15px;
-                padding: 15px 0;
+            .kits-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-preview {
+                grid-template-columns: 1fr;
+            }
+            .countdown-timer {
                 flex-wrap: wrap;
             }
-            .nav-item {
-                font-size: 0.95rem;
-                padding: 15px 20px;
+            .timer-unit {
+                min-width: 100px;
+                padding: var(--space-md);
+            }
+            .notification {
+                min-width: 300px;
+                right: var(--space-md);
+                bottom: var(--space-md);
             }
         }
 
         @media (max-width: 576px) {
+            .cyber-nav {
+                height: 60px;
+            }
+            .cyber-sidebar {
+                top: 60px;
+                height: calc(100vh - 60px);
+                width: 100%;
+            }
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            .page-title {
+                font-size: 2rem;
+            }
+            .welcome-title {
+                font-size: 2rem;
+            }
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-            .ranks-grid {
-                grid-template-columns: 1fr;
+            .kit-card {
+                padding: var(--space-lg);
             }
             .guild-card {
-                padding: 25px 15px;
+                padding: var(--space-xl);
             }
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-            .welcome-section h2 {
-                font-size: 1.8rem;
-            }
-            .top-bar {
-                padding: 10px 15px;
+            .coming-soon-section {
+                padding: var(--space-xl);
             }
         }
 
-        /* Utility Classes */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* ===== UTILITY CLASSES ===== */
+        .glow-text {
+            text-shadow: 0 0 10px currentColor;
         }
 
-        .pulse {
+        .cyber-border {
+            border: 2px solid var(--electric-blue);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .pulse-animation {
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { 
-                transform: scale(1); 
-                opacity: 0.7;
-            }
-            50% { 
-                transform: scale(1.05); 
-                opacity: 1;
-            }
-            100% { 
-                transform: scale(1); 
-                opacity: 0.7;
-            }
+        .shimmer-text {
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-blue), var(--electric-blue));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
         }
 
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        /* ===== LOADING STATES ===== */
         .loading {
             display: inline-block;
             width: 24px;
             height: 24px;
             border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
+            border-radius: var(--radius-circle);
             border-top-color: var(--electric-blue);
             animation: spin 1s ease-in-out infinite;
         }
@@ -1183,365 +1684,976 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Floating particles generator */
-        .particle {
-            pointer-events: none;
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: var(--space-sm);
+            border-radius: var(--radius-small);
+            transition: all var(--transition-normal);
         }
 
-        /* Page transition overlay */
-        .page-transition {
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .mobile-menu-btn:hover {
+                background: rgba(0, 102, 255, 0.1);
+            }
+        }
+
+        /* ===== CUSTOM CURSOR ===== */
+        .custom-cursor {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            width: 20px;
+            height: 20px;
+            border-radius: var(--radius-circle);
+            background: var(--neon-blue);
+            pointer-events: none;
             z-index: 9999;
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.5s ease;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
         }
 
-        .page-transition.active {
-            transform: scaleY(1);
+        .cursor-dot {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: var(--radius-circle);
+            background: var(--text-white);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
 <body>
 
-    <!-- Animated Background Elements -->
-    <div class="background-animation"></div>
-    <div class="grid-lines"></div>
-    <div class="particles" id="particles"></div>
+    <!-- Animated Background -->
+    <div class="cyber-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles" id="particlesContainer"></div>
+        <div class="light-beam"></div>
+    </div>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="user-profile">
-            <div id="loginBtn" style="display: none;">
-                <i class="fas fa-sign-in-alt"></i> Login
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Top Navigation -->
+    <nav class="cyber-nav" id="cyberNav">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <a href="#home" class="nav-logo" data-page="home">
+            <div class="logo-icon">
+                <i class="fas fa-gamepad"></i>
             </div>
-            <div class="username-display" id="usernameDisplay" style="display: none;">
-                <i class="fas fa-user-circle"></i>
+            <div class="logo-text">HOREXMC</div>
+        </a>
+
+        <div class="user-panel">
+            <div class="user-display" id="userDisplay">
+                <i class="fas fa-user-circle user-icon"></i>
                 <span id="usernameText">txgom</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
             
-            <div class="profile-modal" id="profileModal">
-                <div class="username-edit">
-                    <input type="text" id="usernameInput" placeholder="Enter new username" maxlength="20">
-                    <button id="saveUsername">Save</button>
+            <div class="user-menu" id="userMenu">
+                <div class="menu-header">
+                    <h4>USER PROFILE</h4>
                 </div>
-                <p style="color: var(--accent-silver); font-size: 12px; margin-top: 10px;">
-                    You can change your username anytime
+                
+                <div class="menu-section">
+                    <div class="menu-input-group">
+                        <input type="text" id="usernameInput" placeholder="Enter new username" maxlength="20">
+                        <button id="saveUsername">SAVE</button>
+                    </div>
+                </div>
+                
+                <div class="menu-section">
+                    <h4 style="color: var(--text-gray); margin-bottom: var(--space-sm); font-size: 0.9rem;">STATISTICS</h4>
+                    <div class="menu-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Purchases</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$15.50</div>
+                            <div class="stat-label">Spent</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">120</div>
+                            <div class="stat-label">Hours</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">A+</div>
+                            <div class="stat-label">Rank</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <aside class="cyber-sidebar" id="cyberSidebar">
+        <div class="server-info-card">
+            <div class="server-ip-display">
+                <span class="ip-text">PLAY.HOREXMC.NET</span>
+                <button class="copy-ip-btn" id="copyIpBtn">
+                    <i class="fas fa-copy"></i> COPY
+                </button>
+            </div>
+            <a href="https://discord.gg/horexmc" class="discord-connect" target="_blank">
+                <i class="fab fa-discord"></i> JOIN DISCORD
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3 class="section-title">MAIN NAVIGATION</h3>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-page="home">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>HOME</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#kits" class="nav-link" data-page="kits">
+                        <i class="fas fa-box-open nav-icon"></i>
+                        <span>KITS</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#guilds" class="nav-link" data-page="guilds">
+                        <i class="fas fa-users nav-icon"></i>
+                        <span>GUILDS</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#redstonepvp" class="nav-link" data-page="redstonepvp">
+                        <i class="fas fa-fire nav-icon"></i>
+                        <span>REDSTONEPVP</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <h3 class="section-title">QUICK STATS</h3>
+            <div class="menu-stats">
+                <div class="stat-item">
+                    <div class="stat-value">2.5K</div>
+                    <div class="stat-label">Players</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">99.8%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">50ms</div>
+                    <div class="stat-label">Ping</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="page-header">
+                <h1 class="page-title" data-text="WELCOME TO HOREXMC">WELCOME TO HOREXMC</h1>
+                <p class="page-subtitle">
+                    The ultimate Minecraft PvP experience. Dominate the battlefield with our exclusive kits, 
+                    powerful guilds, and competitive gameplay. Join thousands of players in the most advanced 
+                    Minecraft server network.
                 </p>
             </div>
-        </div>
-    </div>
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo-spark"></div>
-                <img src="https://i.imgur.com/8kC6m6B.png" alt="HorexMC Logo" class="logo">
-            </div>
-            
-            <div class="server-info">
-                <div class="server-ip">
-                    <span>PLAY.HOREXMC.NET</span>
-                    <button class="copy-btn" id="copyServerBtn">
-                        <i class="fas fa-copy"></i> Copy
-                    </button>
-                </div>
-                <a href="https://discord.gg/horexmc" class="discord-link" target="_blank">
-                    <i class="fab fa-discord"></i> Join Discord
-                </a>
-            </div>
-
-            <nav class="nav-menu">
-                <a href="#home" class="nav-item active" data-page="home">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="#ranks" class="nav-item" data-page="ranks">
-                    <i class="fas fa-crown"></i> Ranks
-                </a>
-                <a href="#guilds" class="nav-item" data-page="guilds">
-                    <i class="fas fa-users"></i> Guilds
-                </a>
-                <a href="#redstonepvp" class="nav-item" data-page="redstonepvp">
-                    <i class="fas fa-gamepad"></i> RedStonePvP
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Home Page -->
-            <section id="home" class="page active">
-                <div class="page-header">
-                    <h1>Welcome to HorexMC</h1>
-                    <p>Premium Minecraft Server - Ultimate Gaming Experience</p>
-                </div>
-
-                <div class="welcome-section">
-                    <h2>HorexMC Store</h2>
-                    <p>Upgrade your gameplay with premium ranks, exclusive guild features, and special items. Dominate the server with style.</p>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <i class="fas fa-users"></i>
-                            <h3>2,500+</h3>
-                            <p>Active Players</p>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-crown"></i>
-                            <h3>150+</h3>
-                            <p>Rank Purchases</p>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-server"></i>
-                            <h3>24/7</h3>
-                            <p>Server Uptime</p>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-bolt"></i>
-                            <h3>50ms</h3>
-                            <p>Average Ping</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="page-header">
-                    <h1>Server Features</h1>
-                </div>
-
+            <div class="welcome-section">
+                <h2 class="welcome-title">PREMIUM GAMING EXPERIENCE</h2>
+                <p class="welcome-description">
+                    HorexMC offers the most competitive PvP environment with optimized gameplay, 
+                    exclusive features, and regular tournaments. Our store provides everything you 
+                    need to become the ultimate warrior.
+                </p>
+                
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Secure</h3>
-                        <p>Protected Transactions</p>
+                        <i class="fas fa-trophy stat-icon"></i>
+                        <div class="stat-value">150+</div>
+                        <div class="stat-label">Tournaments Won</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-rocket"></i>
-                        <h3>Fast</h3>
-                        <p>Instant Delivery</p>
+                        <i class="fas fa-bolt stat-icon"></i>
+                        <div class="stat-value">50ms</div>
+                        <div class="stat-label">Average Ping</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-headset"></i>
-                        <h3>Support</h3>
-                        <p>24/7 Assistance</p>
+                        <i class="fas fa-shield-alt stat-icon"></i>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Anti-Cheat</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-gem"></i>
-                        <h3>Premium</h3>
-                        <p>High Quality Features</p>
+                        <i class="fas fa-rocket stat-icon"></i>
+                        <div class="stat-value">0.5s</div>
+                        <div class="stat-label">Queue Time</div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Ranks Page -->
-            <section id="ranks" class="page">
-                <div class="page-header">
-                    <h1>Premium Ranks</h1>
-                    <p>Enhance your gameplay with exclusive server ranks</p>
+            <div class="page-header">
+                <h1 class="page-title" data-text="WHY CHOOSE US">WHY CHOOSE US</h1>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-crown stat-icon"></i>
+                    <div class="stat-value">PREMIUM</div>
+                    <div class="stat-label">High Quality Kits</div>
                 </div>
-
-                <div class="ranks-grid">
-                    <div class="rank-card">
-                        <div class="rank-icon gold-rank">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h3>Gold Rank</h3>
-                        <div class="rank-price">$1.99</div>
-                        <ul class="rank-features">
-                            <li><i class="fas fa-check"></i> Gold prefix in chat</li>
-                            <li><i class="fas fa-check"></i> 2 homes</li>
-                            <li><i class="fas fa-check"></i> Access to /fly</li>
-                            <li><i class="fas fa-check"></i> Priority support</li>
-                        </ul>
-                        <button class="buy-btn" data-rank="gold">Buy Now</button>
-                    </div>
-
-                    <div class="rank-card">
-                        <div class="rank-icon diamond-rank">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3>Diamond Rank</h3>
-                        <div class="rank-price">$2.50</div>
-                        <ul class="rank-features">
-                            <li><i class="fas fa-check"></i> Diamond prefix</li>
-                            <li><i class="fas fa-check"></i> 5 homes</li>
-                            <li><i class="fas fa-check"></i> /feed & /heal</li>
-                            <li><i class="fas fa-check"></i> Color chat</li>
-                            <li><i class="fas fa-check"></i> Particle effects</li>
-                        </ul>
-                        <button class="buy-btn" data-rank="diamond">Buy Now</button>
-                    </div>
-
-                    <div class="rank-card">
-                        <div class="rank-icon emerald-rank">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3>Emerald Rank</h3>
-                        <div class="rank-price">$4.99</div>
-                        <ul class="rank-features">
-                            <li><i class="fas fa-check"></i> Emerald prefix</li>
-                            <li><i class="fas fa-check"></i> 10 homes</li>
-                            <li><i class="fas fa-check"></i> All VIP commands</li>
-                            <li><i class="fas fa-check"></i> Nickname</li>
-                            <li><i class="fas fa-check"></i> Pet system</li>
-                            <li><i class="fas fa-check"></i> Vanish mode</li>
-                        </ul>
-                        <button class="buy-btn" data-rank="emerald">Buy Now</button>
-                    </div>
-
-                    <div class="rank-card">
-                        <div class="rank-icon special-rank">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3>Special Rank</h3>
-                        <div class="rank-price">$7.25</div>
-                        <ul class="rank-features">
-                            <li><i class="fas fa-check"></i> Special prefix</li>
-                            <li><i class="fas fa-check"></i> Unlimited homes</li>
-                            <li><i class="fas fa-check"></i> All commands</li>
-                            <li><i class="fas fa-check"></i> Custom join message</li>
-                            <li><i class="fas fa-check"></i> Exclusive cosmetics</li>
-                            <li><i class="fas fa-check"></i> Beta access</li>
-                            <li><i class="fas fa-check"></i> Staff priority</li>
-                        </ul>
-                        <button class="buy-btn" data-rank="special">Buy Now</button>
-                    </div>
+                <div class="stat-card">
+                    <i class="fas fa-bolt stat-icon"></i>
+                    <div class="stat-value">FAST</div>
+                    <div class="stat-label">Instant Delivery</div>
                 </div>
-            </section>
-
-            <!-- Guilds Page -->
-            <section id="guilds" class="page">
-                <div class="page-header">
-                    <h1>Guild System</h1>
-                    <p>Create or join powerful guilds with exclusive features</p>
+                <div class="stat-card">
+                    <i class="fas fa-shield-alt stat-icon"></i>
+                    <div class="stat-value">SECURE</div>
+                    <div class="stat-label">Protected Payments</div>
                 </div>
+                <div class="stat-card">
+                    <i class="fas fa-headset stat-icon"></i>
+                    <div class="stat-value">SUPPORT</div>
+                    <div class="stat-label">24/7 Assistance</div>
+                </div>
+            </div>
+        </section>
 
-                <div class="guilds-container">
-                    <div class="guild-card">
-                        <div class="guild-icon">
-                            <i class="fas fa-chess-king"></i>
-                        </div>
-                        <h2>Guild + Tag</h2>
-                        <p>Establish your own guild with a custom tag. Lead your team to victory with advanced guild management tools and exclusive perks.</p>
-                        <div class="guild-price">$5.00</div>
-                        <button class="buy-btn" data-guild="guild">Purchase Guild</button>
+        <!-- Kits Page -->
+        <section id="kits" class="page">
+            <div class="page-header">
+                <h1 class="page-title" data-text="POWERFUL KITS">POWERFUL KITS</h1>
+                <p class="page-subtitle">
+                    Dominate the battlefield with our exclusive kits. Each kit is carefully designed 
+                    to give you the ultimate PvP advantage with unique abilities and powerful gear.
+                </p>
+            </div>
+
+            <div class="kits-container">
+                <!-- Gold Kit -->
+                <div class="kit-category">
+                    <div class="category-header">
+                        <h2 class="category-title">
+                            <i class="fas fa-coins category-icon"></i>
+                            GOLD KITS
+                        </h2>
+                        <p class="category-description">
+                            Perfect for beginners. Get started with essential PvP gear and abilities.
+                        </p>
                     </div>
 
-                    <div class="guild-card">
-                        <h2>Guild Features</h2>
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <i class="fas fa-flag"></i>
-                                <h3>Custom Tag</h3>
-                                <p>Unique guild identifier</p>
+                    <div class="kits-grid">
+                        <div class="kit-card gold-kit">
+                            <div class="kit-header">
+                                <div class="kit-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3 class="kit-title">GOLD WARRIOR</h3>
+                                <div class="kit-price">$1.99</div>
                             </div>
-                            <div class="stat-card">
-                                <i class="fas fa-trophy"></i>
-                                <h3>Guild War</h3>
-                                <p>Battle other guilds</p>
+                            
+                            <ul class="kit-features">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Full Gold Armor Set (Protection II)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Sharpness II Gold Sword</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">3 Golden Apples + 1 Strength Potion</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Speed I Potion (1:30)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">64 Arrows + Power I Bow</span>
+                                </li>
+                            </ul>
+                            
+                            <button class="buy-kit-btn" data-kit="gold-warrior">
+                                BUY GOLD KIT
+                            </button>
+                        </div>
+
+                        <div class="kit-card pvp-kit gold-kit">
+                            <div class="kit-header">
+                                <div class="kit-icon">
+                                    <i class="fas fa-fist-raised"></i>
+                                </div>
+                                <h3 class="kit-title">GOLD PVP PRO</h3>
+                                <div class="kit-price">$2.50</div>
                             </div>
-                            <div class="stat-card">
-                                <i class="fas fa-home"></i>
-                                <h3>Guild Base</h3>
-                                <p>Shared territory</p>
+                            
+                            <div class="pvp-feature-grid">
+                                <div class="pvp-feature">
+                                    <i class="fas fa-running pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Attack Speed</div>
+                                    <div class="pvp-feature-value">+15%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-shield-alt pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Reduced KB</div>
+                                    <div class="pvp-feature-value">-30%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-heart pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Extra Hearts</div>
+                                    <div class="pvp-feature-value">+2 ❤️</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-bolt pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Movement Speed</div>
+                                    <div class="pvp-feature-value">+10%</div>
+                                </div>
                             </div>
-                            <div class="stat-card">
-                                <i class="fas fa-chart-line"></i>
-                                <h3>Statistics</h3>
-                                <p>Track progress</p>
-                            </div>
+                            
+                            <ul class="kit-features">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Knockback Resistance II</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Critical Hit Boost +10%</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Quick Health Regen (3s)</span>
+                                </li>
+                            </ul>
+                            
+                            <button class="buy-kit-btn" data-kit="gold-pvp-pro">
+                                BUY PVP PRO
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- RedStonePvP Page -->
-            <section id="redstonepvp" class="page">
-                <div class="page-header">
-                    <h1>RedStonePvP</h1>
-                    <p>The Ultimate PvP Experience - Coming Soon</p>
+                <!-- Diamond Kits -->
+                <div class="kit-category">
+                    <div class="category-header">
+                        <h2 class="category-title">
+                            <i class="fas fa-gem category-icon"></i>
+                            DIAMOND KITS
+                        </h2>
+                        <p class="category-description">
+                            Advanced kits for serious players. Unleash true power with diamond gear.
+                        </p>
+                    </div>
+
+                    <div class="kits-grid">
+                        <div class="kit-card diamond-kit">
+                            <div class="kit-header">
+                                <div class="kit-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h3 class="kit-title">DIAMOND DOMINATOR</h3>
+                                <div class="kit-price">$4.99</div>
+                            </div>
+                            
+                            <ul class="kit-features">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Full Diamond Armor (Protection III)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Sharpness III Diamond Sword</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">5 Golden Apples + 2 Strength II Pots</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Speed II + Jump Boost II Potions</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">128 Arrows + Power II Bow</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Fire Aspect I + Looting III</span>
+                                </li>
+                            </ul>
+                            
+                            <button class="buy-kit-btn" data-kit="diamond-dominator">
+                                BUY DIAMOND KIT
+                            </button>
+                        </div>
+
+                        <div class="kit-card pvp-kit diamond-kit">
+                            <div class="kit-header">
+                                <div class="kit-icon">
+                                    <i class="fas fa-skull-crossbones"></i>
+                                </div>
+                                <h3 class="kit-title">DIAMOND PVP MASTER</h3>
+                                <div class="kit-price">$5.50</div>
+                            </div>
+                            
+                            <div class="pvp-feature-grid">
+                                <div class="pvp-feature">
+                                    <i class="fas fa-running pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Attack Speed</div>
+                                    <div class="pvp-feature-value">+25%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-shield-alt pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Reduced KB</div>
+                                    <div class="pvp-feature-value">-50%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-heart pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Extra Hearts</div>
+                                    <div class="pvp-feature-value">+4 ❤️</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-bolt pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Movement Speed</div>
+                                    <div class="pvp-feature-value">+15%</div>
+                                </div>
+                            </div>
+                            
+                            <ul class="kit-features">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">No Knockback Effect</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Critical Hit Boost +20%</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Instant Health Regen (1.5s)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Damage Reduction 15%</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Combo Damage Multiplier 1.5x</span>
+                                </li>
+                            </ul>
+                            
+                            <button class="buy-kit-btn" data-kit="diamond-pvp-master">
+                                BUY PVP MASTER
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="coming-soon">
-                    <i class="fas fa-tools"></i>
-                    <h2>Under Development</h2>
-                    <p>RedStonePvP is currently in development. Stay tuned for updates!</p>
+                <!-- Emerald Kits -->
+                <div class="kit-category">
+                    <div class="category-header">
+                        <h2 class="category-title">
+                            <i class="fas fa-gem category-icon"></i>
+                            EMERALD KITS
+                        </h2>
+                        <p class="category-description">
+                            Elite kits for top players. Experience ultimate power and dominance.
+                        </p>
+                    </div>
+
+                    <div class="kits-grid">
+                        <div class="kit-card emerald-kit">
+                            <div class="kit-header">
+                                <div class="kit-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h3 class="kit-title">EMERALD LEGEND</h3>
+                                <div class="kit-price">$7.25</div>
+                            </div>
+                            
+                            <ul class="kit-features">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Full Emerald Armor (Protection IV)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Sharpness IV Emerald Sword</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">10 Golden Apples + 3 Strength II Pots</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Speed II + Jump III + Regen II</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">256 Arrows + Power III Bow</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Fire Aspect II + Looting III + Unbreaking III</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Ender Pearl x5 + Experience Bottles x32</span>
+                                </li>
+                            </ul>
+                            
+                            <button class="buy-kit-btn" data-kit="emerald-legend">
+                                BUY EMERALD KIT
+                            </button>
+                        </div>
+
+                        <div class="kit-card pvp-kit emerald-kit">
+                            <div class="kit-header">
+                                <div class="kit-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3 class="kit-title">EMERALD PVP GOD</h3>
+                                <div class="kit-price">$8.99</div>
+                            </div>
+                            
+                            <div class="pvp-feature-grid">
+                                <div class="pvp-feature">
+                                    <i class="fas fa-running pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Attack Speed</div>
+                                    <div class="pvp-feature-value">+35%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-shield-alt pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Reduced KB</div>
+                                    <div class="pvp-feature-value">-70%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-heart pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Extra Hearts</div>
+                                    <div class="pvp-feature-value">+6 ❤️</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-bolt pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Movement Speed</div>
+                                    <div class="pvp-feature-value">+20%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-fist-raised pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Damage Boost</div>
+                                    <div class="pvp-feature-value">+25%</div>
+                                </div>
+                                <div class="pvp-feature">
+                                    <i class="fas fa-heartbeat pvp-feature-icon"></i>
+                                    <div class="pvp-feature-text">Health Regen</div>
+                                    <div class="pvp-feature-value">+200%</div>
+                                </div>
+                            </div>
+                            
+                            <ul class="kit-features">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Complete Knockback Immunity</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Critical Hit Boost +35%</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Instant Full Health Regen (Command)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Damage Reduction 25%</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Combo Damage Multiplier 2x</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Auto-Potion Effect (Every 30s)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon"></i>
+                                    <span class="feature-text">Thorns III Reflected Damage</span>
+                                </li>
+                            </ul>
+                            
+                            <button class="buy-kit-btn" data-kit="emerald-pvp-god">
+                                BUY PVP GOD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guilds Page -->
+        <section id="guilds" class="page">
+            <div class="page-header">
+                <h1 class="page-title" data-text="POWERFUL GUILDS">POWERFUL GUILDS</h1>
+                <p class="page-subtitle">
+                    Create your own empire or join existing ones. Guilds provide exclusive benefits, 
+                    territory control, and massive rewards for coordinated play.
+                </p>
+            </div>
+
+            <div class="guilds-container">
+                <div class="guild-card">
+                    <div class="guild-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h2 class="guild-title">ULTIMATE GUILD PACKAGE</h2>
+                    <p class="guild-description">
+                        Establish your dominance with our complete guild package. Includes custom tag, 
+                        guild base, management tools, and exclusive guild-only features.
+                    </p>
+                    <div class="guild-price">$5.00</div>
                     
-                    <div class="stats-grid" style="margin-top: 45px;">
-                        <div class="stat-card">
-                            <i class="fas fa-bolt"></i>
-                            <h3>Fast-Paced</h3>
-                            <p>Quick PvP matches</p>
+                    <div class="guild-features-grid">
+                        <div class="guild-feature">
+                            <i class="fas fa-flag guild-feature-icon"></i>
+                            <h3 class="guild-feature-title">Custom Tag</h3>
+                            <p class="guild-feature-desc">Unique guild identifier in chat</p>
                         </div>
-                        <div class="stat-card">
-                            <i class="fas fa-redo"></i>
-                            <h3>Reset Kit</h3>
-                            <p>Regular kit updates</p>
+                        <div class="guild-feature">
+                            <i class="fas fa-home guild-feature-icon"></i>
+                            <h3 class="guild-feature-title">Guild Base</h3>
+                            <p class="guild-feature-desc">Protected territory for your guild</p>
                         </div>
-                        <div class="stat-card">
-                            <i class="fas fa-trophy"></i>
-                            <h3>Ranked</h3>
-                            <p>Competitive system</p>
+                        <div class="guild-feature">
+                            <i class="fas fa-trophy guild-feature-icon"></i>
+                            <h3 class="guild-feature-title">Guild Wars</h3>
+                            <p class="guild-feature-desc">Battle other guilds for rewards</p>
                         </div>
-                        <div class="stat-card">
-                            <i class="fas fa-award"></i>
-                            <h3>Rewards</h3>
-                            <p>Exclusive prizes</p>
+                        <div class="guild-feature">
+                            <i class="fas fa-chart-line guild-feature-icon"></i>
+                            <h3 class="guild-feature-title">Statistics</h3>
+                            <p class="guild-feature-desc">Track guild progress & rankings</p>
+                        </div>
+                        <div class="guild-feature">
+                            <i class="fas fa-coins guild-feature-icon"></i>
+                            <h3 class="guild-feature-title">Guild Bank</h3>
+                            <p class="guild-feature-desc">Shared economy system</p>
+                        </div>
+                        <div class="guild-feature">
+                            <i class="fas fa-shield-alt guild-feature-icon"></i>
+                            <h3 class="guild-feature-title">Protection</h3>
+                            <p class="guild-feature-desc">Base protection & permissions</p>
                         </div>
                     </div>
+                    
+                    <button class="buy-kit-btn" data-kit="guild-package" style="max-width: 300px; margin: var(--space-xl) auto;">
+                        PURCHASE GUILD PACKAGE
+                    </button>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </section>
 
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        <i class="fas fa-info-circle"></i>
-        <div class="notification-content">
-            <h4 id="notificationTitle">Notification</h4>
-            <p id="notificationMessage">This is a notification message</p>
+        <!-- RedStonePvP Page -->
+        <section id="redstonepvp" class="page">
+            <div class="page-header">
+                <h1 class="page-title" data-text="REDSTONEPVP">REDSTONEPVP</h1>
+                <p class="page-subtitle">
+                    The ultimate competitive PvP experience is coming soon. Prepare for fast-paced action, 
+                    ranked matches, and exclusive rewards in our most advanced game mode yet.
+                </p>
+            </div>
+
+            <div class="coming-soon-section">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h2 class="coming-soon-title">COMING SOON</h2>
+                <p class="coming-soon-text">
+                    RedStonePvP is currently under development. We're creating the most balanced and 
+                    competitive PvP experience with unique features and regular tournaments.
+                </p>
+                
+                <div class="countdown-timer">
+                    <div class="timer-unit">
+                        <div class="timer-value" id="days">30</div>
+                        <div class="timer-label">Days</div>
+                    </div>
+                    <div class="timer-unit">
+                        <div class="timer-value" id="hours">12</div>
+                        <div class="timer-label">Hours</div>
+                    </div>
+                    <div class="timer-unit">
+                        <div class="timer-value" id="minutes">45</div>
+                        <div class="timer-label">Minutes</div>
+                    </div>
+                    <div class="timer-unit">
+                        <div class="timer-value" id="seconds">30</div>
+                        <div class="timer-label">Seconds</div>
+                    </div>
+                </div>
+                
+                <div class="features-preview">
+                    <div class="preview-card">
+                        <i class="fas fa-bolt preview-icon"></i>
+                        <h3 class="preview-title">Fast-Paced Combat</h3>
+                        <p class="preview-description">
+                            1v1 and team battles with quick respawns and intense action. Perfect your skills in high-speed PvP.
+                        </p>
+                    </div>
+                    <div class="preview-card">
+                        <i class="fas fa-trophy preview-icon"></i>
+                        <h3 class="preview-title">Ranked System</h3>
+                        <p class="preview-description">
+                            Compete in ranked matches and climb the leaderboards. Earn exclusive rewards each season.
+                        </p>
+                    </div>
+                    <div class="preview-card">
+                        <i class="fas fa-redo preview-icon"></i>
+                        <h3 class="preview-title">Reset Kits</h3>
+                        <p class="preview-description">
+                            Regular kit resets keep the gameplay fresh and balanced. New strategies every season.
+                        </p>
+                    </div>
+                    <div class="preview-card">
+                        <i class="fas fa-award preview-icon"></i>
+                        <h3 class="preview-title">Exclusive Rewards</h3>
+                        <p class="preview-description">
+                            Win unique cosmetics, titles, and in-game advantages. Show off your PvP skills.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification System -->
+    <div class="notification-system" id="notificationSystem"></div>
+
+    <!-- Footer -->
+    <footer class="cyber-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">HOREXMC NETWORK</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" class="footer-link" data-page="home">
+                        <i class="fas fa-home footer-link-icon"></i>
+                        <span>Home</span>
+                    </a></li>
+                    <li><a href="#kits" class="footer-link" data-page="kits">
+                        <i class="fas fa-box-open footer-link-icon"></i>
+                        <span>Kits</span>
+                    </a></li>
+                    <li><a href="#guilds" class="footer-link" data-page="guilds">
+                        <i class="fas fa-users footer-link-icon"></i>
+                        <span>Guilds</span>
+                    </a></li>
+                    <li><a href="#redstonepvp" class="footer-link" data-page="redstonepvp">
+                        <i class="fas fa-fire footer-link-icon"></i>
+                        <span>RedStonePvP</span>
+                    </a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">SUPPORT</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">
+                        <i class="fas fa-question-circle footer-link-icon"></i>
+                        <span>Help Center</span>
+                    </a></li>
+                    <li><a href="#" class="footer-link">
+                        <i class="fas fa-file-alt footer-link-icon"></i>
+                        <span>Terms of Service</span>
+                    </a></li>
+                    <li><a href="#" class="footer-link">
+                        <i class="fas fa-shield-alt footer-link-icon"></i>
+                        <span>Privacy Policy</span>
+                    </a></li>
+                    <li><a href="#" class="footer-link">
+                        <i class="fas fa-headset footer-link-icon"></i>
+                        <span>Contact Support</span>
+                    </a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">CONNECT</h3>
+                <div class="social-links">
+                    <a href="https://discord.gg/horexmc" class="social-link" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+                
+                <div style="margin-top: var(--space-xl);">
+                    <div class="server-ip-display" style="background: rgba(0,0,0,0.5);">
+                        <span class="ip-text">PLAY.HOREXMC.NET</span>
+                        <button class="copy-ip-btn">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <i class="fas fa-times" id="closeNotification"></i>
-    </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HorexMC Network. All rights reserved. Minecraft is a trademark of Mojang AB.</p>
+            <p style="margin-top: var(--space-sm); color: var(--electric-blue); font-size: 0.8rem;">
+                Designed with <i class="fas fa-heart" style="color: var(--special-red);"></i> for the PvP community
+            </p>
+        </div>
+    </footer>
 
     <script>
-        // DOM Elements
-        const loginBtn = document.getElementById('loginBtn');
-        const usernameDisplay = document.getElementById('usernameDisplay');
+        // ===== GLOBAL VARIABLES =====
+        let currentUsername = localStorage.getItem('horexmc_username') || 'txgom';
+        let activePage = 'home';
+        let notifications = [];
+        let cursorX = 0;
+        let cursorY = 0;
+        let cursorDotX = 0;
+        let cursorDotY = 0;
+
+        // ===== DOM ELEMENTS =====
+        const cyberNav = document.getElementById('cyberNav');
+        const cyberSidebar = document.getElementById('cyberSidebar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const userDisplay = document.getElementById('userDisplay');
+        const userMenu = document.getElementById('userMenu');
         const usernameText = document.getElementById('usernameText');
-        const profileModal = document.getElementById('profileModal');
         const usernameInput = document.getElementById('usernameInput');
         const saveUsernameBtn = document.getElementById('saveUsername');
-        const copyServerBtn = document.getElementById('copyServerBtn');
-        const navItems = document.querySelectorAll('.nav-item');
+        const copyIpBtn = document.getElementById('copyIpBtn');
+        const navLinks = document.querySelectorAll('.nav-link, .footer-link');
         const pages = document.querySelectorAll('.page');
-        const buyButtons = document.querySelectorAll('.buy-btn');
-        const notification = document.getElementById('notification');
-        const notificationTitle = document.getElementById('notificationTitle');
-        const notificationMessage = document.getElementById('notificationMessage');
-        const closeNotification = document.getElementById('closeNotification');
-        const particlesContainer = document.getElementById('particles');
+        const buyButtons = document.querySelectorAll('.buy-kit-btn');
+        const notificationSystem = document.getElementById('notificationSystem');
+        const customCursor = document.getElementById('customCursor');
+        const cursorDot = document.getElementById('cursorDot');
+        const particlesContainer = document.getElementById('particlesContainer');
 
-        // Current username (default: txgom)
-        let currentUsername = localStorage.getItem('horexmc_username') || 'txgom';
+        // ===== UTILITY FUNCTIONS =====
+        function showNotification(title, message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            
+            const icons = {
+                info: 'fa-info-circle',
+                success: 'fa-check-circle',
+                warning: 'fa-exclamation-triangle',
+                error: 'fa-times-circle'
+            };
+            
+            const colors = {
+                info: 'var(--electric-blue)',
+                success: 'var(--matrix-green)',
+                warning: 'var(--gold-yellow)',
+                error: 'var(--special-red)'
+            };
+            
+            notification.innerHTML = `
+                <div class="notification-header">
+                    <div class="notification-title" style="color: ${colors[type]}">
+                        <i class="fas ${icons[type]} notification-icon"></i>
+                        <span>${title}</span>
+                    </div>
+                    <button class="notification-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="notification-content">${message}</div>
+            `;
+            
+            notificationSystem.appendChild(notification);
+            
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                notification.style.animation = 'slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) reverse';
+                setTimeout(() => notification.remove(), 400);
+            });
+            
+            setTimeout(() => notification.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) reverse';
+                    setTimeout(() => notification.remove(), 400);
+                }
+            }, 5000);
+        }
 
-        // Create floating particles
+        function setActivePage(pageId) {
+            // Update navigation
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Show corresponding page
+            pages.forEach(page => {
+                if (page.id === pageId) {
+                    page.classList.add('active');
+                    activePage = pageId;
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+
+            // Update URL hash
+            history.replaceState(null, null, `#${pageId}`);
+            
+            // Close mobile menu
+            if (window.innerWidth <= 992) {
+                cyberSidebar.classList.remove('active');
+            }
+        }
+
+        // ===== BACKGROUND PARTICLES =====
         function createParticles() {
-            const particleCount = 30;
+            const particleCount = 50;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
-                particle.classList.add('particle');
+                particle.className = 'particle';
                 
                 // Random size
-                const size = Math.random() * 60 + 20;
+                const size = Math.random() * 100 + 30;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
@@ -1549,98 +2661,179 @@
                 particle.style.left = `${Math.random() * 100}vw`;
                 particle.style.top = `${Math.random() * 100}vh`;
                 
-                // Random animation delay and duration
-                const delay = Math.random() * 10;
-                const duration = Math.random() * 10 + 15;
+                // Random color
+                const colors = [
+                    'rgba(0, 102, 255, 0.3)',
+                    'rgba(0, 204, 255, 0.3)',
+                    'rgba(157, 0, 255, 0.3)',
+                    'rgba(0, 255, 157, 0.3)'
+                ];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random animation
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 20 + 20;
                 particle.style.animationDelay = `${delay}s`;
                 particle.style.animationDuration = `${duration}s`;
-                
-                // Random opacity
-                particle.style.opacity = Math.random() * 0.2 + 0.1;
                 
                 particlesContainer.appendChild(particle);
             }
         }
 
-        // Initialize page
-        function initPage() {
-            // Create particles
+        // ===== CUSTOM CURSOR =====
+        function updateCursor(e) {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+        }
+
+        function animateCursor() {
+            const dx = cursorX - cursorDotX;
+            const dy = cursorY - cursorDotY;
+            
+            cursorDotX += dx * 0.1;
+            cursorDotY += dy * 0.1;
+            
+            customCursor.style.left = `${cursorX}px`;
+            customCursor.style.top = `${cursorY}px`;
+            cursorDot.style.left = `${cursorDotX}px`;
+            cursorDot.style.top = `${cursorDotY}px`;
+            
+            requestAnimationFrame(animateCursor);
+        }
+
+        function handleCursorHover() {
+            const interactiveElements = document.querySelectorAll(
+                'a, button, .nav-link, .buy-kit-btn, .kit-card, .stat-card, .feature-item, .user-display'
+            );
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    customCursor.style.width = '40px';
+                    customCursor.style.height = '40px';
+                    customCursor.style.background = 'var(--neon-blue)';
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    customCursor.style.width = '20px';
+                    customCursor.style.height = '20px';
+                    customCursor.style.background = 'var(--electric-blue)';
+                });
+            });
+        }
+
+        // ===== COUNTDOWN TIMER =====
+        function updateCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 30);
+            
+            function update() {
+                const now = new Date();
+                const difference = targetDate - now;
+                
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                // Add animation every second
+                const timerUnits = document.querySelectorAll('.timer-value');
+                timerUnits.forEach(unit => {
+                    unit.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        unit.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+
+        // ===== INITIALIZATION =====
+        function initializePage() {
+            // Set username
+            usernameText.textContent = currentUsername;
+            usernameInput.value = currentUsername;
+            
+            // Create background particles
             createParticles();
             
-            // Check if user is logged in
-            loginBtn.style.display = 'none';
-            usernameDisplay.style.display = 'flex';
-            usernameText.textContent = currentUsername;
+            // Initialize countdown timer
+            updateCountdown();
             
-            // Set initial active page based on hash
+            // Set initial page from hash
             const hash = window.location.hash.substring(1) || 'home';
             setActivePage(hash);
             
-            // Add initial animation to welcome section
-            const welcomeSection = document.querySelector('.welcome-section');
-            if (welcomeSection) {
-                setTimeout(() => {
-                    welcomeSection.style.transform = 'translateY(0)';
-                    welcomeSection.style.opacity = '1';
-                }, 300);
+            // Initialize custom cursor
+            document.addEventListener('mousemove', updateCursor);
+            animateCursor();
+            handleCursorHover();
+            
+            // Hide custom cursor on touch devices
+            if ('ontouchstart' in window) {
+                customCursor.style.display = 'none';
+                cursorDot.style.display = 'none';
             }
+            
+            // Show welcome notification
+            setTimeout(() => {
+                showNotification(
+                    'Welcome to HorexMC!',
+                    'Explore our exclusive kits and dominate the battlefield.',
+                    'success'
+                );
+            }, 1000);
         }
 
-        // Set active page
-        function setActivePage(pageId) {
-            // Update navigation
-            navItems.forEach(item => {
-                if (item.getAttribute('data-page') === pageId) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            // Show corresponding page with animation
-            pages.forEach(page => {
-                if (page.id === pageId) {
-                    setTimeout(() => {
-                        page.classList.add('active');
-                    }, 50);
-                } else {
-                    page.classList.remove('active');
-                }
-            });
-
-            // Update URL hash
-            window.location.hash = pageId;
-        }
-
-        // Navigation click handlers
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
+        // ===== EVENT LISTENERS =====
+        // Navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const pageId = item.getAttribute('data-page');
+                const pageId = link.getAttribute('data-page');
                 setActivePage(pageId);
                 
                 // Add click effect
-                item.style.transform = 'scale(0.95)';
+                link.style.transform = 'scale(0.95)';
                 setTimeout(() => {
-                    item.style.transform = '';
+                    link.style.transform = '';
                 }, 150);
             });
         });
 
-        // Username display click handler
-        usernameDisplay.addEventListener('click', () => {
-            profileModal.classList.toggle('active');
-            usernameInput.value = currentUsername;
-            usernameInput.focus();
+        // Mobile menu
+        mobileMenuBtn.addEventListener('click', () => {
+            cyberSidebar.classList.toggle('active');
+            mobileMenuBtn.innerHTML = cyberSidebar.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // User menu
+        userDisplay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userMenu.classList.toggle('active');
             
             // Add click effect
-            usernameDisplay.style.transform = 'scale(0.95)';
+            userDisplay.style.transform = 'scale(0.95)';
             setTimeout(() => {
-                usernameDisplay.style.transform = '';
+                userDisplay.style.transform = '';
             }, 150);
         });
 
-        // Save username handler
+        document.addEventListener('click', (e) => {
+            if (!userDisplay.contains(e.target) && !userMenu.contains(e.target)) {
+                userMenu.classList.remove('active');
+            }
+        });
+
+        // Save username
         saveUsernameBtn.addEventListener('click', () => {
             const newUsername = usernameInput.value.trim();
             
@@ -1648,185 +2841,277 @@
                 currentUsername = newUsername;
                 usernameText.textContent = currentUsername;
                 localStorage.setItem('horexmc_username', currentUsername);
-                profileModal.classList.remove('active');
-                showNotification('Success', 'Username updated successfully!');
+                userMenu.classList.remove('active');
+                
+                showNotification(
+                    'Username Updated',
+                    `Your username has been changed to ${currentUsername}`,
+                    'success'
+                );
                 
                 // Add success effect
-                usernameDisplay.style.boxShadow = '0 0 20px rgba(0, 240, 255, 0.5)';
+                userDisplay.style.boxShadow = '0 0 20px var(--glow-blue)';
                 setTimeout(() => {
-                    usernameDisplay.style.boxShadow = '';
+                    userDisplay.style.boxShadow = '';
                 }, 1000);
             } else {
-                showNotification('Error', 'Username must be 3-20 characters');
+                showNotification(
+                    'Invalid Username',
+                    'Username must be 3-20 characters long',
+                    'error'
+                );
                 
                 // Add error effect
-                usernameInput.style.boxShadow = '0 0 15px rgba(255, 0, 0, 0.5)';
+                usernameInput.style.boxShadow = '0 0 15px rgba(255, 51, 102, 0.5)';
                 setTimeout(() => {
                     usernameInput.style.boxShadow = '';
                 }, 1000);
             }
         });
 
-        // Copy server IP handler
-        copyServerBtn.addEventListener('click', () => {
+        // Copy IP
+        copyIpBtn.addEventListener('click', () => {
             navigator.clipboard.writeText('PLAY.HOREXMC.NET').then(() => {
-                showNotification('Copied', 'Server IP copied to clipboard!');
+                showNotification(
+                    'IP Copied',
+                    'Server IP has been copied to clipboard',
+                    'success'
+                );
                 
                 // Add copy effect
-                copyServerBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                copyServerBtn.style.background = 'var(--success-color)';
-                copyServerBtn.style.borderColor = 'var(--success-color)';
+                copyIpBtn.innerHTML = '<i class="fas fa-check"></i> COPIED!';
+                copyIpBtn.style.background = 'var(--matrix-green)';
+                copyIpBtn.style.borderColor = 'var(--matrix-green)';
                 
                 setTimeout(() => {
-                    copyServerBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                    copyServerBtn.style.background = 'transparent';
-                    copyServerBtn.style.borderColor = 'var(--electric-blue)';
+                    copyIpBtn.innerHTML = '<i class="fas fa-copy"></i> COPY';
+                    copyIpBtn.style.background = '';
+                    copyIpBtn.style.borderColor = '';
                 }, 2000);
             }).catch(err => {
-                showNotification('Error', 'Failed to copy IP');
+                showNotification(
+                    'Copy Failed',
+                    'Failed to copy IP to clipboard',
+                    'error'
+                );
             });
         });
 
-        // Buy button handlers
+        // Buy buttons
         buyButtons.forEach(button => {
             button.addEventListener('click', async function() {
-                const rank = this.getAttribute('data-rank') || this.getAttribute('data-guild');
+                const kit = this.getAttribute('data-kit');
                 const originalText = this.textContent;
-                const price = this.closest('.rank-card')?.querySelector('.rank-price')?.textContent || 
-                              this.closest('.guild-card')?.querySelector('.guild-price')?.textContent || 
-                              '$0.00';
+                const originalHTML = this.innerHTML;
+                
+                // Get kit price
+                const priceElement = this.closest('.kit-card')?.querySelector('.kit-price');
+                const price = priceElement?.textContent || '$0.00';
                 
                 // Add click effect
                 this.style.transform = 'scale(0.95)';
                 
                 // Disable button and show loading
                 this.disabled = true;
-                this.innerHTML = '<div class="loading"></div> Processing...';
+                this.innerHTML = '<div class="loading"></div> PROCESSING...';
                 
                 // Simulate API call delay
-                await new Promise(resolve => setTimeout(resolve, 1800));
+                await new Promise(resolve => setTimeout(resolve, 2000));
                 
                 // Show payment message
                 showNotification(
                     'Payment Required',
-                    `Payment for ${rank} (${price}) coming soon. Please check back later.`
+                    `Payment for ${kit} (${price}) is coming soon. Please check back later for the payment system.`,
+                    'warning'
                 );
                 
                 // Re-enable button with reset
                 setTimeout(() => {
                     this.disabled = false;
-                    this.textContent = originalText;
+                    this.innerHTML = originalHTML;
                     this.style.transform = '';
-                }, 2000);
+                }, 3000);
             });
         });
 
-        // Show notification
-        function showNotification(title, message) {
-            notificationTitle.textContent = title;
-            notificationMessage.textContent = message;
-            notification.classList.add('show');
-            
-            // Auto hide after 5 seconds
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 5000);
-        }
-
-        // Close notification
-        closeNotification.addEventListener('click', () => {
-            notification.classList.remove('show');
-        });
-
-        // Close modal when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!usernameDisplay.contains(e.target) && !profileModal.contains(e.target)) {
-                profileModal.classList.remove('active');
-            }
-        });
-
-        // Handle hash changes
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.substring(1) || 'home';
-            setActivePage(hash);
-        });
-
-        // Add mouse move effects
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            // Move background gradient slightly
-            document.querySelector('.background-animation').style.transform = 
-                `translate(${x * 10}px, ${y * 10}px)`;
-            
-            // Move particles slightly
-            document.querySelectorAll('.particle').forEach(particle => {
-                const speed = 0.3;
-                particle.style.transform = 
-                    `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
-
-        // Add scroll effects
-        let lastScroll = 0;
+        // Scroll effects
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            // Parallax effect for background
-            document.querySelector('.background-animation').style.transform = 
-                `translateY(${currentScroll * 0.1}px)`;
-            
-            // Show/hide top bar on scroll
-            const topBar = document.querySelector('.top-bar');
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                topBar.style.transform = 'translateY(-100%)';
+            // Navbar scroll effect
+            if (window.scrollY > 50) {
+                cyberNav.classList.add('scrolled');
             } else {
-                topBar.style.transform = 'translateY(0)';
+                cyberNav.classList.remove('scrolled');
             }
             
-            lastScroll = currentScroll;
+            // Parallax effects
+            const scrolled = window.pageYOffset;
+            const gridOverlay = document.querySelector('.grid-overlay');
+            if (gridOverlay) {
+                gridOverlay.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
         });
 
-        // Add keyboard shortcuts
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             // Ctrl+H for Home
             if (e.ctrlKey && e.key === 'h') {
                 e.preventDefault();
                 setActivePage('home');
             }
-            // Ctrl+R for Ranks
-            if (e.ctrlKey && e.key === 'r') {
+            // Ctrl+K for Kits
+            if (e.ctrlKey && e.key === 'k') {
                 e.preventDefault();
-                setActivePage('ranks');
+                setActivePage('kits');
             }
             // Ctrl+G for Guilds
             if (e.ctrlKey && e.key === 'g') {
                 e.preventDefault();
                 setActivePage('guilds');
             }
-            // Esc to close modal
+            // Ctrl+R for RedStonePvP
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                setActivePage('redstonepvp');
+            }
+            // Esc to close menus
             if (e.key === 'Escape') {
-                profileModal.classList.remove('active');
-                notification.classList.remove('show');
+                userMenu.classList.remove('active');
+                cyberSidebar.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
 
-        // Add hover effects to all interactive elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const interactiveElements = document.querySelectorAll(
-                '.nav-item, .stat-card, .rank-card, .guild-card, .buy-btn, .copy-btn, .discord-link'
-            );
-            
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    element.style.transition = 'all 0.3s ease';
-                });
-            });
+        // Hash change handler
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.substring(1) || 'home';
+            setActivePage(hash);
         });
 
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', initPage);
+        // ===== ANIMATIONS ON SCROLL =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Add staggered animations for child elements
+                    const childElements = entry.target.querySelectorAll('.kit-card, .stat-card, .feature-item');
+                    childElements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.kit-card, .stat-card, .guild-card, .preview-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // ===== INITIALIZE EVERYTHING =====
+        document.addEventListener('DOMContentLoaded', initializePage);
+
+        // ===== ADDITIONAL EFFECTS =====
+        // Add ripple effect to buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.buy-kit-btn, .nav-link, .copy-ip-btn, #saveUsername')) {
+                const ripple = document.createElement('span');
+                const rect = e.target.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    pointer-events: none;
+                `;
+                
+                e.target.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            }
+        });
+
+        // Add CSS for ripple effect
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Random glitch effect on page title
+        setInterval(() => {
+            const pageTitle = document.querySelector('.page-title');
+            if (pageTitle && Math.random() > 0.7) {
+                pageTitle.style.textShadow = '2px 2px 0 var(--special-red), -2px -2px 0 var(--matrix-green)';
+                setTimeout(() => {
+                    pageTitle.style.textShadow = '';
+                }, 100);
+            }
+        }, 3000);
+
+        // Particle animation on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: var(--neon-blue);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9998;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    animation: sparkle 1s forwards;
+                `;
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1000);
+            }
+        });
+
+        // Add CSS for sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0) translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
     </script>
 </body>
 </html>
