@@ -1,11 +1,103 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>HorexMC</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorexMc Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS يبدأ هنا */
+        body {
+            margin: 0;
+            overflow: hidden; /* يمنع ظهور أشرطة التمرير إذا تجاوزت الخلفية الشاشة */
+            font-family: 'Orbitron', sans-serif; /* خط تقني للمظهر */
+            color: #fff; /* لون النص الافتراضي أبيض */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* يجعل الصفحة تأخذ كامل الارتفاع */
+            background: linear-gradient(45deg, #000080, #0000cd, #4169e1, #6495ed); /* تدرج أزرق داكن */
+            background-size: 400% 400%; /* حجم كبير للخلفية للتأثير المتحرك */
+            animation: gradientAnimation 15s ease infinite; /* حركة الخلفية */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2; /* للتأكد أن المحتوى يظهر فوق الخلفية المتحركة */
+        }
+
+        .store-name {
+            font-size: 5em; /* حجم كبير للنص */
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff; /* تأثير توهج أزرق فاتح */
+            color: #e0f7fa; /* لون النص أزرق فاتح جداً */
+            animation: electricityEffect 1.5s ease-in-out infinite alternate; /* حركة تأثير الكهرباء */
+            letter-spacing: 5px; /* تباعد الأحرف */
+        }
+
+        @keyframes electricityEffect {
+            0% {
+                text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+                transform: scale(1.02);
+                color: #b3e5fc; /* يتغير اللون قليلاً عند التوهج */
+            }
+            100% {
+                text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+                transform: scale(1);
+            }
+        }
+
+        .slogan {
+            font-size: 1.5em;
+            margin-top: 20px;
+            opacity: 0.8;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 0.8; transform: translateY(0); }
+        }
+
+        /* لإنشاء تأثير "الكهرباء" المتوهجة المحيطة بالصفحة (اختياري) */
+        .electricity-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* لا يتفاعل مع الماوس */
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.7), 0 0 100px rgba(0, 255, 255, 0.5), 0 0 150px rgba(0, 255, 255, 0.3);
+            animation: borderGlow 3s ease infinite alternate;
+            z-index: 1; /* يظهر خلف المحتوى لكن فوق الخلفية */
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3); }
+            100% { box-shadow: 0 0 60px rgba(0, 255, 255, 0.8), 0 0 120px rgba(0, 255, 255, 0.6); }
+        }
+
+        /* نهاية CSS */
+    </style>
 </head>
 <body>
-<h1>HorexMC Website 🚀</h1>
-<p>الموقع شغال بنجاح على GitHub Pages</p>
+    <div class="electricity-border"></div>
+    <div class="container">
+        <h1 class="store-name">HorexMc</h1>
+        <p class="slogan">متجرك لعالم من الابتكار</p>
+    </div>
 </body>
 </html>
