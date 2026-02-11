@@ -1,1044 +1,3059 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>AI الفائق - بحث حقيقي وبرمجة ذاتية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorexMC Store - Premium Minecraft Server</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="HorexMC Official Store - Purchase premium Minecraft ranks, guilds, and RedStonePvP features. Enhance your gaming experience with exclusive perks.">
+    <meta name="keywords" content="Minecraft, HorexMC, Minecraft Server, Ranks, Guilds, PvP, Gaming Store, Premium Minecraft">
+    <meta name="author" content="HorexMC Team">
+    <meta property="og:title" content="HorexMC Store">
+    <meta property="og:description" content="Official store for HorexMC Minecraft server">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#00b0ff">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
     <style>
+        /* ===== RESET & BASE ===== */
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #121212;
+            --tertiary-dark: #1a1a1a;
+            --accent-blue: #1a73e8;
+            --electric-blue: #00b0ff;
+            --neon-blue: #00f3ff;
+            --deep-blue: #0066cc;
+            --accent-silver: #b0bec5;
+            --accent-white: #ffffff;
+            --accent-gray: #2d2d2d;
+            --success-color: #00c853;
+            --warning-color: #ff9800;
+            --error-color: #f44336;
+            --price-color: #ffd700;
+            --diamond-color: #b9f2ff;
+            --emerald-color: #50c878;
+            --gold-color: #ffd700;
+            --vip-color: #9b30ff;
+            --cart-color: #ff4081;
+            --discord-color: #5865F2;
+            --twitch-color: #9146ff;
+            --youtube-color: #ff0000;
+            
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(0, 176, 255, 0.15);
+            --card-hover: rgba(0, 176, 255, 0.1);
+            --modal-bg: rgba(18, 18, 18, 0.95);
+            
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
+            --glow-blue: 0 0 20px rgba(0, 240, 255, 0.3);
+            --glow-strong: 0 0 30px rgba(0, 240, 255, 0.5);
+            
+            --radius-sm: 8px;
+            --radius-md: 15px;
+            --radius-lg: 25px;
+            --radius-xl: 35px;
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
         body {
-            font-family: 'Cairo', sans-serif;
-            background: #0a0c0f;
-            color: #fff;
+            background-color: var(--primary-dark);
+            color: var(--accent-white);
             min-height: 100vh;
-            padding: 20px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
-
-        .container {
+        
+        /* ===== BACKGROUND SYSTEM ===== */
+        .background-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            overflow: hidden;
+        }
+        
+        .cosmic-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, 
+                var(--primary-dark) 0%,
+                #0a0a1a 25%,
+                #12122a 50%,
+                #0a0a1a 75%,
+                var(--primary-dark) 100%
+            );
+            animation: cosmicPulse 30s ease-in-out infinite;
+        }
+        
+        @keyframes cosmicPulse {
+            0%, 100% { 
+                background-size: 100% 100%;
+                opacity: 1;
+            }
+            50% { 
+                background-size: 120% 120%;
+                opacity: 0.9;
+            }
+        }
+        
+        .star-field {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--neon-blue), transparent),
+                radial-gradient(2px 2px at 40px 70px, var(--electric-blue), transparent),
+                radial-gradient(3px 3px at 80px 40px, var(--accent-white), transparent),
+                radial-gradient(2px 2px at 60px 90px, var(--neon-blue), transparent),
+                radial-gradient(3px 3px at 120px 60px, var(--electric-blue), transparent),
+                radial-gradient(2px 2px at 160px 30px, var(--accent-white), transparent),
+                radial-gradient(3px 3px at 200px 80px, var(--neon-blue), transparent),
+                radial-gradient(2px 2px at 240px 50px, var(--electric-blue), transparent),
+                radial-gradient(3px 3px at 280px 20px, var(--accent-white), transparent),
+                radial-gradient(2px 2px at 320px 70px, var(--neon-blue), transparent);
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            animation: starTwinkle 8s infinite alternate;
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        
+        .nebula-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 176, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 243, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(155, 48, 255, 0.05) 0%, transparent 50%);
+            animation: nebulaFloat 60s ease-in-out infinite;
+        }
+        
+        @keyframes nebulaFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                filter: blur(0px);
+            }
+            33% { 
+                transform: translate(-50px, 30px) scale(1.1);
+                filter: blur(2px);
+            }
+            66% { 
+                transform: translate(30px, -50px) scale(0.9);
+                filter: blur(1px);
+            }
+        }
+        
+        .energy-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 176, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 176, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridFlow 40s linear infinite;
+        }
+        
+        @keyframes gridFlow {
+            0% { 
+                background-position: 0 0;
+                opacity: 0.3;
+            }
+            100% { 
+                background-position: 50px 50px;
+                opacity: 0.5;
+            }
+        }
+        
+        .particle-field {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--neon-blue), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        /* ===== LOADING SCREEN ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity var(--transition-slow);
+        }
+        
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-logo {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .diamond-sword {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(185, 242, 255, 0.7));
+            animation: swordGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes swordGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 15px rgba(185, 242, 255, 0.5));
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                filter: drop-shadow(0 0 30px rgba(185, 242, 255, 0.9));
+                transform: scale(1.1) rotate(5deg);
+            }
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(185, 242, 255, 0.2);
+            border-top-color: var(--diamond-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: var(--accent-silver);
+            font-size: 1.1rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .loading-progress {
+            width: 300px;
+            height: 4px;
+            background: rgba(185, 242, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .loading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-blue));
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        /* ===== TOP NAVIGATION ===== */
+        .top-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 176, 255, 0.2);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .top-navigation.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(25px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 20px;
-        }
-
-        /* القسم الرئيسي */
-        .main-chat {
-            background: #111316;
-            border-radius: 24px;
-            border: 1px solid #2a2e35;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 95vh;
-        }
-
-        .chat-header {
-            padding: 20px;
-            background: #0c0e12;
-            border-bottom: 1px solid #2a2e35;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .ai-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: white;
-        }
-
-        .ai-title {
-            flex: 1;
-        }
-
-        .ai-title h2 {
-            font-size: 20px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ai-badge {
-            background: #0055ff;
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-
-        .ai-status {
-            color: #00ff99;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: #00ff99;
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        #chatbox {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            background: #0a0c0f;
-        }
-
-        .message {
-            display: flex;
-            gap: 12px;
-            max-width: 90%;
-            animation: fadeIn 0.3s;
-        }
-
-        .message.user {
-            align-self: flex-end;
-            flex-direction: row-reverse;
-        }
-
-        .message-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .user .message-avatar {
-            background: #7e57c2;
-        }
-
-        .ai .message-avatar {
-            background: linear-gradient(145deg, #0066ff, #00ccff);
-        }
-
-        .message-content {
-            background: #1e2228;
-            padding: 14px 18px;
-            border-radius: 18px;
-            border-bottom-right-radius: 5px;
-            color: #e6e9f0;
-            font-size: 15px;
-            line-height: 1.6;
-            position: relative;
-        }
-
-        .user .message-content {
-            background: #0055ff;
-            color: white;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 18px;
-        }
-
-        /* كود التنسيق */
-        .code-block {
-            background: #0d1117;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 12px;
-            border: 1px solid #3d444d;
-            direction: ltr;
-            text-align: left;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #a5d6ff;
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .code-header {
+            padding: 0 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            direction: rtl;
+            height: 80px;
         }
-
-        .copy-btn {
-            background: #2d333b;
-            border: none;
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
+        
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 6px;
-        }
-
-        .copy-btn:hover {
-            background: #3d444d;
-        }
-
-        /* منطقة الإدخال */
-        .input-wrapper {
-            padding: 20px;
-            background: #111316;
-            border-top: 1px solid #2a2e35;
-        }
-
-        .input-container {
-            display: flex;
-            gap: 12px;
-            background: #1c1f26;
-            border-radius: 16px;
-            padding: 6px;
-            border: 1px solid #353b45;
-        }
-
-        #userInput {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 14px 18px;
-            color: white;
-            font-size: 15px;
-            font-family: 'Cairo', sans-serif;
-            outline: none;
-        }
-
-        #userInput::placeholder {
-            color: #6b7280;
-        }
-
-        .send-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: #0055ff;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .send-btn:hover {
-            background: #0044cc;
-            transform: scale(1.05);
-        }
-
-        .send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* الشريط الجانبي */
-        .sidebar {
-            background: #111316;
-            border-radius: 24px;
-            border: 1px solid #2a2e35;
-            padding: 20px;
-            height: 95vh;
-            overflow-y: auto;
-        }
-
-        .sidebar h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #b1c3ff;
-        }
-
-        .search-result {
-            background: #1a1d24;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border: 1px solid #2f3540;
-        }
-
-        .search-result h4 {
-            color: #66ccff;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-
-        .search-result p {
-            color: #b0b9c9;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .search-link {
-            color: #00cc88;
+            gap: 15px;
             text-decoration: none;
-            font-size: 13px;
+        }
+        
+        .nav-logo-icon {
+            width: 45px;
+            height: 45px;
+            filter: drop-shadow(0 0 10px var(--diamond-color));
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .nav-logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--diamond-color), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .nav-center {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-link {
+            color: var(--accent-silver);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 10px 0;
+            position: relative;
+            transition: color var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-white);
+        }
+        
+        .nav-link.active {
+            color: var(--neon-blue);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-blue));
+            border-radius: 1px;
+            animation: underlineExpand 0.3s ease;
+        }
+        
+        @keyframes underlineExpand {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cart-icon-wrapper {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .cart-icon-wrapper:hover {
+            background: var(--card-hover);
+            transform: translateY(-2px);
+        }
+        
+        .cart-icon {
+            font-size: 1.3rem;
+            color: var(--accent-silver);
+            transition: color var(--transition-fast);
+        }
+        
+        .cart-icon-wrapper:hover .cart-icon {
+            color: var(--neon-blue);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--cart-color);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(25%, -25%);
+            box-shadow: 0 2px 10px rgba(255, 64, 129, 0.3);
+            animation: countBounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes countBounce {
+            0%, 100% { transform: translate(25%, -25%) scale(1); }
+            50% { transform: translate(25%, -25%) scale(1.2); }
+        }
+        
+        /* ===== USER PROFILE SYSTEM ===== */
+        .user-profile-container {
+            position: relative;
+        }
+        
+        .profile-trigger {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 176, 255, 0.3);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            backdrop-filter: blur(10px);
+        }
+        
+        .profile-trigger:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--electric-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--glow-blue);
+        }
+        
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .profile-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent-white);
+        }
+        
+        .profile-status {
+            font-size: 0.75rem;
+            color: var(--success-color);
             display: flex;
             align-items: center;
             gap: 5px;
         }
-
-        .generated-script {
-            background: #0f1117;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 20px;
-            border-right: 4px solid #00aaff;
+        
+        .profile-status::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--success-color);
+            border-radius: 50%;
+            animation: statusPulse 2s infinite;
         }
-
-        .script-title {
-            color: #88ddff;
-            font-weight: 600;
-            margin-bottom: 10px;
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 320px;
+            background: var(--modal-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(0, 176, 255, 0.2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all var(--transition-normal);
+        }
+        
+        .profile-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-header {
+            padding: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(0, 176, 255, 0.1), 
+                rgba(0, 243, 255, 0.05)
+            );
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        
+        .dropdown-avatar-large {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glow-blue);
+        }
+        
+        .dropdown-username {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--accent-white);
+        }
+        
+        .dropdown-email {
+            text-align: center;
+            color: var(--accent-silver);
+            font-size: 0.9rem;
+        }
+        
+        .dropdown-menu {
+            padding: 20px 0;
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            color: var(--accent-silver);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-white);
+            padding-left: 30px;
+        }
+        
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--electric-blue);
+        }
+        
+        .dropdown-item:hover i {
+            color: var(--neon-blue);
+        }
+        
+        .dropdown-footer {
+            padding: 20px 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .credits-balance {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .credits-label {
+            font-size: 0.8rem;
+            color: var(--accent-silver);
+        }
+        
+        .credits-amount {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--price-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .logout-btn {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+            padding: 8px 20px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-
-        .script-preview {
-            background: #0a0c10;
-            padding: 12px;
-            border-radius: 8px;
-            color: #ccddff;
-            font-family: monospace;
-            font-size: 13px;
-            max-height: 200px;
+        
+        .logout-btn:hover {
+            background: var(--error-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+        }
+        
+        /* ===== MAIN LAYOUT ===== */
+        .main-container {
+            max-width: 1400px;
+            margin: 100px auto 50px;
+            padding: 0 30px;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            position: relative;
+            padding: 100px 0;
+            margin-bottom: 80px;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(0, 176, 255, 0.15),
+                rgba(0, 243, 255, 0.1),
+                rgba(10, 10, 26, 0.4)
+            );
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(0, 176, 255, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            color: white;
+            padding: 8px 20px;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--glow-blue);
+            animation: badgePulse 2s infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, 
+                var(--diamond-color) 0%,
+                var(--neon-blue) 50%,
+                var(--electric-blue) 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-silver);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-btn {
+            padding: 18px 40px;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            outline: none;
+        }
+        
+        .hero-btn-primary {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            color: white;
+            box-shadow: var(--glow-blue);
+        }
+        
+        .hero-btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow-strong);
+            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
+        }
+        
+        .hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--electric-blue);
+            transform: translateY(-5px);
+            box-shadow: var(--glow-blue);
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+        
+        .hero-stat {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(5px);
+            transition: all var(--transition-normal);
+        }
+        
+        .hero-stat:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--electric-blue);
+            margin-bottom: 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stat-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-white);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-label {
+            color: var(--accent-silver);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== STORE SECTION ===== */
+        .store-section {
+            margin-bottom: 100px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: rgba(0, 176, 255, 0.1);
+            color: var(--electric-blue);
+            padding: 8px 20px;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0, 176, 255, 0.2);
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-silver);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* ===== RANKS GRID ===== */
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .rank-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .rank-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-blue));
+        }
+        
+        .rank-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--neon-blue);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .rank-card.featured {
+            background: linear-gradient(135deg, 
+                rgba(0, 176, 255, 0.15),
+                rgba(0, 243, 255, 0.1),
+                var(--card-bg)
+            );
+            border: 1px solid var(--neon-blue);
+            transform: scale(1.05);
+        }
+        
+        .rank-card.featured:hover {
+            transform: scale(1.05) translateY(-15px);
+        }
+        
+        .rank-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--price-color);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .rank-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .rank-card:hover .rank-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .rank-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent-white);
+        }
+        
+        .rank-description {
+            color: var(--accent-silver);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .rank-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--price-color);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .rank-price span {
+            font-size: 1rem;
+            color: var(--accent-silver);
+            font-weight: 400;
+        }
+        
+        .rank-features {
+            list-style: none;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+        
+        .rank-features li {
+            padding: 10px 0;
+            color: var(--accent-silver);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .rank-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .rank-features li i {
+            color: var(--electric-blue);
+            font-size: 1rem;
+        }
+        
+        .rank-features li.featured i {
+            color: var(--price-color);
+        }
+        
+        .rank-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rank-btn:hover {
+            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
+            transform: translateY(-3px);
+            box-shadow: var(--glow-strong);
+        }
+        
+        .rank-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--electric-blue);
+            color: var(--electric-blue);
+        }
+        
+        .rank-btn.secondary:hover {
+            background: var(--electric-blue);
+            color: white;
+        }
+        
+        /* ===== GUILDS SECTION ===== */
+        .guilds-section {
+            margin-bottom: 100px;
+        }
+        
+        .guilds-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .guild-card {
+            background: linear-gradient(135deg,
+                rgba(0, 176, 255, 0.1),
+                rgba(0, 243, 255, 0.05),
+                var(--card-bg)
+            );
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-xl);
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 50px;
+            transition: all var(--transition-normal);
+            backdrop-filter: blur(10px);
+        }
+        
+        .guild-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .guild-icon {
+            font-size: 4rem;
+            color: var(--electric-blue);
+            margin-bottom: 30px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .guild-card:hover .guild-icon {
+            color: var(--neon-blue);
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .guild-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--accent-white);
+        }
+        
+        .guild-description {
+            font-size: 1.2rem;
+            color: var(--accent-silver);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .guild-price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: var(--price-color);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        .guild-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        /* ===== COMING SOON ===== */
+        .coming-soon {
+            text-align: center;
+            padding: 100px 40px;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.03),
+                rgba(176, 190, 197, 0.02)
+            );
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .coming-soon-icon {
+            font-size: 5rem;
+            color: var(--accent-silver);
+            margin-bottom: 30px;
+            opacity: 0.7;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* ===== CART SYSTEM ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--modal-bg);
+            backdrop-filter: blur(25px);
+            border-left: 1px solid rgba(0, 176, 255, 0.3);
+            z-index: 1002;
+            transition: right var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--accent-silver);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: all var(--transition-fast);
+        }
+        
+        .close-cart:hover {
+            color: var(--neon-blue);
+            transform: rotate(90deg);
+        }
+        
+        .cart-content {
+            flex: 1;
+            padding: 25px;
             overflow-y: auto;
         }
-
-        .thinking {
+        
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--accent-silver);
+        }
+        
+        .cart-empty i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .cart-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            background: #1a1e26;
-            border-radius: 50px;
-            margin-top: 10px;
-            width: fit-content;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-fast);
         }
-
-        .thinking span {
-            width: 8px;
-            height: 8px;
-            background: #0099ff;
+        
+        .cart-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--electric-blue);
+        }
+        
+        .cart-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--accent-white);
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--price-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: var(--radius-md);
+        }
+        
+        .quantity-btn {
+            background: none;
+            border: none;
+            color: var(--accent-silver);
+            cursor: pointer;
+            padding: 5px;
+            transition: all var(--transition-fast);
+        }
+        
+        .quantity-btn:hover {
+            color: var(--neon-blue);
+            transform: scale(1.2);
+        }
+        
+        .cart-item-remove {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .cart-item-remove:hover {
+            background: var(--error-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .cart-totals {
+            margin-bottom: 25px;
+        }
+        
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .cart-total-row:last-child {
+            border-bottom: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--price-color);
+        }
+        
+        .cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        /* ===== NOTIFICATION SYSTEM ===== */
+        .notification-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1003;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+        }
+        
+        .notification {
+            background: var(--modal-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(0, 176, 255, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all var(--transition-bounce);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .notification-icon {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            min-width: 40px;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: 700;
+            color: var(--accent-white);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .notification-message {
+            color: var(--accent-silver);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--accent-silver);
+            cursor: pointer;
+            padding: 5px;
+            transition: all var(--transition-fast);
+        }
+        
+        .notification-close:hover {
+            color: var(--neon-blue);
+            transform: rotate(90deg);
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 176, 255, 0.2);
+            padding: 80px 0 40px;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px var(--diamond-color));
+        }
+        
+        .footer-description {
+            color: var(--accent-silver);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            animation: thinking 1.4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: all var(--transition-normal);
+            text-decoration: none;
         }
-
-        .thinking span:nth-child(2) { animation-delay: 0.2s; background: #66ccff; }
-        .thinking span:nth-child(3) { animation-delay: 0.4s; background: #aaddff; }
-
-        @keyframes thinking {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
+        
+        .social-link.discord { background: var(--discord-color); }
+        .social-link.twitter { background: #1DA1F2; }
+        .social-link.youtube { background: var(--youtube-color); }
+        .social-link.twitch { background: var(--twitch-color); }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-
-        .google-icon {
-            color: #4285F4;
-            margin-left: 5px;
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--accent-white);
+            position: relative;
         }
-
-        @media (max-width: 1000px) {
-            .container {
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-blue));
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--accent-silver);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--neon-blue);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            color: var(--accent-silver);
+            font-size: 0.9rem;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-legal a {
+            color: var(--accent-silver);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-legal a:hover {
+            color: var(--neon-blue);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .cart-sidebar {
+                width: 350px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-center {
+                display: none;
+            }
+            
+            .nav-right {
+                gap: 15px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .guild-card {
+                padding: 40px 30px;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 20px;
+                margin: 90px auto 30px;
+            }
+            
+            .nav-container {
+                padding: 0 20px;
+                height: 70px;
+            }
+            
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .rank-card.featured {
+                transform: none;
+            }
+            
+            .rank-card.featured:hover {
+                transform: translateY(-15px);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-legal {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-stat {
+                padding: 20px;
+            }
+            
+            .stat-value {
+                font-size: 2.2rem;
+            }
+            
+            .ranks-grid {
                 grid-template-columns: 1fr;
             }
-            .sidebar {
-                height: auto;
+            
+            .guild-card {
+                padding: 30px 20px;
             }
+            
+            .guild-title {
+                font-size: 2rem;
+            }
+            
+            .profile-trigger {
+                padding: 10px 15px;
+            }
+            
+            .dropdown-header {
+                padding: 20px;
+            }
+            
+            .dropdown-username {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* ===== UTILITY CLASSES ===== */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
+            transform: translateY(-3px);
+            box-shadow: var(--glow-strong);
+        }
+        
+        .card-hover {
+            transition: all var(--transition-normal);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.6s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 10, 10, 0.8);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            border-radius: 5px;
+            border: 2px solid rgba(10, 10, 10, 0.8);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        /* ===== SELECTION ===== */
+        ::selection {
+            background: rgba(0, 176, 255, 0.3);
+            color: var(--accent-white);
+        }
+        
+        /* ===== FOCUS STATES ===== */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--electric-blue);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- القسم الرئيسي للمحادثة -->
-        <div class="main-chat">
-            <div class="chat-header">
-                <div class="ai-avatar">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <div class="ai-title">
-                    <h2>
-                        الذكاء الاصطناعي الفائق
-                        <span class="ai-badge">GPT-4 + البحث المباشر</span>
-                    </h2>
-                    <div class="ai-status">
-                        <span class="dot"></span>
-                        متصل • قدرة على البرمجة والبحث في قوقل
-                    </div>
-                </div>
-                <div style="display: flex; gap: 10px;">
-                    <button onclick="clearChat()" style="background: none; border: 1px solid #3a4050; color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer;">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <!-- Diamond Sword Icon -->
+            <svg class="diamond-sword" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 2L13 7H19V9H14.46L16.5 14H21V16H18.46L20.5 21L15 16H9L3 21L5 16H2V14H7.5L9.54 9H5V7H11L13 2H11Z" 
+                      fill="currentColor"/>
+                <path d="M12 5.5L11 8H13L12 5.5Z" fill="currentColor"/>
+                <path d="M15 12L14 14.5H16L15 12Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading HorexMC Experience...</div>
+        <div class="loading-progress">
+            <div class="loading-progress-bar" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <!-- Background System -->
+    <div class="background-system">
+        <div class="cosmic-background"></div>
+        <div class="star-field"></div>
+        <div class="nebula-effect"></div>
+        <div class="energy-grid"></div>
+        <div class="particle-field" id="particleField"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="top-navigation" id="topNav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="#home" class="nav-logo">
+                <svg class="nav-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 2L13 7H19V9H14.46L16.5 14H21V16H18.46L20.5 21L15 16H9L3 21L5 16H2V14H7.5L9.54 9H5V7H11L13 2H11Z" 
+                          fill="currentColor"/>
+                </svg>
+                <span class="nav-logo-text">HOREXMC</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="nav-center">
+                <a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#ranks" class="nav-link">
+                    <i class="fas fa-crown"></i> Ranks
+                </a>
+                <a href="#guilds" class="nav-link">
+                    <i class="fas fa-users"></i> Guilds
+                </a>
+                <a href="#pvp" class="nav-link">
+                    <i class="fas fa-gamepad"></i> RedStonePvP
+                </a>
+                <a href="#support" class="nav-link">
+                    <i class="fas fa-headset"></i> Support
+                </a>
             </div>
 
-            <!-- صندوق المحادثة -->
-            <div id="chatbox"></div>
-
-            <!-- منطقة الإدخال -->
-            <div class="input-wrapper">
-                <div class="input-container">
-                    <input type="text" id="userInput" placeholder="اكتب أمرك... استطيع البحث في قوقل وبرمجة أي سكربت تطلبه" autocomplete="off">
-                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
+            <!-- Right Section -->
+            <div class="nav-right">
+                <!-- Cart Icon -->
+                <div class="cart-icon-wrapper" id="cartIcon">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count" id="cartCount">0</span>
                 </div>
-                <div style="display: flex; gap: 15px; margin-top: 12px; color: #8892a0; font-size: 13px;">
-                    <span><i class="fas fa-search google-icon"></i> بحث مباشر في قوقل</span>
-                    <span><i class="fas fa-code"></i> برمجة سكربتات</span>
-                    <span><i class="fas fa-globe"></i> تحليل مواقع</span>
+
+                <!-- User Profile -->
+                <div class="user-profile-container">
+                    <div class="profile-trigger" id="profileTrigger">
+                        <div class="profile-avatar">TX</div>
+                        <div class="profile-info">
+                            <div class="profile-name" id="profileName">txgom</div>
+                            <div class="profile-status">Online</div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="dropdown-header">
+                            <div class="dropdown-avatar-large">TX</div>
+                            <div class="dropdown-username" id="dropdownUsername">txgom</div>
+                            <div class="dropdown-email">player@horexmc.net</div>
+                        </div>
+                        
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" id="editProfileBtn">
+                                <i class="fas fa-user-edit"></i>
+                                <span>Edit Profile</span>
+                            </div>
+                            <div class="dropdown-item" id="purchaseHistoryBtn">
+                                <i class="fas fa-history"></i>
+                                <span>Purchase History</span>
+                            </div>
+                            <div class="dropdown-item" id="settingsBtn">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </div>
+                            <div class="dropdown-item" id="supportTicketBtn">
+                                <i class="fas fa-ticket-alt"></i>
+                                <span>Support Tickets</span>
+                            </div>
+                        </div>
+                        
+                        <div class="dropdown-footer">
+                            <div class="credits-balance">
+                                <div class="credits-label">Your Credits</div>
+                                <div class="credits-amount">
+                                    <i class="fas fa-gem"></i>
+                                    <span id="creditsAmount">0</span>
+                                </div>
+                            </div>
+                            <button class="logout-btn" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <!-- الشريط الجانبي - النتائج والسكربتات -->
-        <div class="sidebar">
-            <h3>
-                <i class="fas fa-robot" style="color: #66ccff;"></i>
-                ذكاء اصطناعي جبار - قدرات حقيقية
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">
+                <i class="fas fa-shopping-cart"></i>
+                Your Cart
             </h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-content" id="cartContent">
+            <!-- Cart items will be dynamically inserted here -->
+            <div class="cart-empty" id="emptyCart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Add some items to get started!</p>
+            </div>
             
-            <div id="sidebar-content">
-                <div style="color: #a0b0c0; text-align: center; padding: 30px 0;">
-                    <i class="fas fa-cogs" style="font-size: 48px; color: #336699; margin-bottom: 15px;"></i>
-                    <h4 style="color: white; margin-bottom: 10px;">أنا ذكاء اصطناعي حقيقي!</h4>
-                    <p style="font-size: 14px;">✓ أبحث في قوقل مباشرة<br>✓ أبرمج أي سكربت تطلبه<br>✓ أحلل المواقع<br>✓ أكتب أكواد بأي لغة</p>
+            <div class="cart-items" id="cartItems" style="display: none;"></div>
+        </div>
+        
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-totals">
+                <div class="cart-total-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">$0.00</span>
                 </div>
+                <div class="cart-total-row">
+                    <span>Tax</span>
+                    <span id="cartTax">$0.00</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Total</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="btn-gradient" id="checkoutBtn" style="width: 100%;">
+                    <i class="fas fa-lock"></i>
+                    Proceed to Checkout
+                </button>
+                <button class="rank-btn secondary" id="clearCartBtn" style="width: 100%;">
+                    <i class="fas fa-trash"></i>
+                    Clear Cart
+                </button>
             </div>
         </div>
     </div>
 
-    <script>
-        // ------------------------------------------------------
-        // ذكاء اصطناعي جبار - بحث حقيقي في قوقل وبرمجة سكربتات
-        // ------------------------------------------------------
-        
-        const chatbox = document.getElementById('chatbox');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const sidebarContent = document.getElementById('sidebar-content');
-
-        // تخزين السياق
-        let conversationHistory = [];
-        let generatedScripts = [];
-
-        // APIs
-        const GOOGLE_API_KEY = 'AIzaSyA9WzCqQnA7tAqzXqZqWzqZqWzqZqWzqZqWz'; // هذا مفتاح وهمي - المستخدم سيضع مفتاحه
-        const GOOGLE_CX = 'YOUR_SEARCH_ENGINE_ID'; // معرف محرك البحث المخصص
-        
-        // رسالة ترحيب
-        window.onload = function() {
-            addMessage('🌟 مرحباً! أنا الذكاء الاصطناعي الفائق.\n\n**قدراتي الحقيقية:**\n✅ البحث المباشر في قوقل - أكتب "ابحث عن ..."\n✅ برمجة أي سكربت - أكتب "اكتب سكربت لـ ..."\n✅ تحليل المواقع - اكتب "حلل موقع ..."\n✅ برمجة بأي لغة - Python, JavaScript, PHP, وغيرها\n\n**جرب الآن:** اكتب "ابحث عن آخر أخبار التكنولوجيا" أو "برمج لي آلة حاسبة بـ JavaScript"', 'ai');
-            
-            // محاولة تحميل المفتاح من التخزين
-            loadAPIKeys();
-        };
-
-        // ------------------------------------------------------
-        // البحث في قوقل - حقيقي 100%
-        // ------------------------------------------------------
-        async function searchGoogle(query) {
-            addThinking('جاري البحث في قوقل عن: ' + query);
-            
-            try {
-                // هنا نستخدم واجهة قوقل الرسمية - لكن المستخدم يحتاج مفتاح API
-                // سأستخدم واجهة بديلة مجانية لتعمل فوراً
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <div class="hero-badge animate__animated animate__pulse animate__infinite">
+                    <i class="fas fa-star"></i> Premium Server
+                </div>
                 
-                // الطريقة 1: استخدام واجهة قوقل العامة (تعمل بدون مفتاح)
-                const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyDxKL0z1s9J0Wq1H1ZqWq1ZqWq1ZqWq1ZqWq&cx=017576662512468239146:omuauf_lfve&q=${encodeURIComponent(query)}`, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                });
+                <h1 class="hero-title animate__animated animate__fadeInUp">
+                    Welcome to <span class="text-gradient">HorexMC</span>
+                </h1>
                 
-                if (response.ok) {
-                    const data = await response.json();
-                    displaySearchResults(data.items || []);
-                    return formatSearchResults(data.items || []);
-                } else {
-                    // إذا فشل، نستخدم بديل (محاكاة بحث حقيقي عبر واجهة أخرى)
-                    return await fallbackSearch(query);
-                }
-            } catch (error) {
-                console.log('خطأ في البحث المباشر، استخدام البديل:', error);
-                return await fallbackSearch(query);
-            }
-        }
-
-        // بديل البحث - يستخدم مصادر مفتوحة
-        async function fallbackSearch(query) {
-            addMessage('جاري البحث عبر مصادر متعددة...', 'ai');
-            
-            // محاكاة بحث حقيقي - لكن هنا نجلب نتائج حقيقية من واجهات عامة
-            try {
-                // استخدام واجهة ويكيبيديا
-                const wikiResponse = await fetch(`https://ar.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`);
-                const wikiData = await wikiResponse.json();
+                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    Premium Minecraft Server – Ultimate Gaming Experience
+                </p>
                 
-                let results = [];
-                if (wikiData.query && wikiData.query.search) {
-                    results = wikiData.query.search.slice(0, 3).map(item => ({
-                        title: item.title,
-                        snippet: item.snippet.replace(/<\/?[^>]+(>|$)/g, ""),
-                        link: `https://ar.wikipedia.org/wiki/${encodeURIComponent(item.title)}`
-                    }));
-                }
+                <div class="hero-actions animate__animated animate__fadeInUp animate__delay-2s">
+                    <button class="hero-btn hero-btn-primary" id="joinServerBtn">
+                        <i class="fas fa-gamepad"></i>
+                        Join Server Now
+                    </button>
+                    <button class="hero-btn hero-btn-secondary" id="exploreStoreBtn">
+                        <i class="fas fa-store"></i>
+                        Explore Store
+                    </button>
+                </div>
                 
-                displaySearchResults(results);
-                return formatSearchResults(results);
-            } catch (e) {
-                return "عذراً، حدث خطأ في البحث. جرب كتابة 'ابحث عن' مرة أخرى.";
-            }
-        }
-
-        // عرض نتائج البحث في الشريط الجانبي
-        function displaySearchResults(results) {
-            let html = '<h3 style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-search" style="color: #4285F4;"></i> نتائج البحث المباشر</h3>';
-            
-            if (results.length === 0) {
-                html += '<p style="color: #99aabb;">لا توجد نتائج</p>';
-            } else {
-                results.forEach((item, index) => {
-                    html += `
-                        <div class="search-result">
-                            <h4>${index+1}. ${item.title || 'عنوان'}</h4>
-                            <p>${item.snippet || 'لا يوجد وصف'}</p>
-                            <a href="${item.link || '#'}" target="_blank" class="search-link">
-                                <i class="fas fa-external-link-alt"></i> زيارة المصدر
-                            </a>
+                <div class="hero-stats animate__animated animate__fadeIn animate__delay-3s">
+                    <div class="hero-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
                         </div>
-                    `;
-                });
-            }
-            
-            sidebarContent.innerHTML = html + generatedScriptsHTML();
-        }
-
-        // ------------------------------------------------------
-        // برمجة سكربتات - ذكاء اصطناعي حقيقي
-        // ------------------------------------------------------
-        async function generateScript(request) {
-            addThinking('🧠 جاري برمجة السكربت المطلوب...');
-            
-            // تحديد لغة البرمجة المطلوبة
-            let language = 'javascript';
-            let task = request;
-            
-            if (request.includes('python') || request.includes('بايثرون')) language = 'python';
-            if (request.includes('php')) language = 'php';
-            if (request.includes('java')) language = 'java';
-            if (request.includes('html') || request.includes('css')) language = 'html';
-            
-            // توليد السكربت بناءً على الطلب
-            let script = '';
-            let explanation = '';
-            
-            if (request.includes('آلة حاسبة') || request.includes('calculator')) {
-                if (language === 'javascript') {
-                    script = `// آلة حاسبة متطورة بواسطة الذكاء الاصطناعي
-class Calculator {
-    constructor() {
-        this.result = 0;
-    }
-    
-    add(a, b) { return a + b; }
-    subtract(a, b) { return a - b; }
-    multiply(a, b) { return a * b; }
-    divide(a, b) { 
-        if(b === 0) throw new Error('لا يمكن القسمة على صفر');
-        return a / b; 
-    }
-    
-    power(a, b) { return Math.pow(a, b); }
-    sqrt(a) { return Math.sqrt(a); }
-    sin(deg) { return Math.sin(deg * Math.PI / 180); }
-    cos(deg) { return Math.cos(deg * Math.PI / 180); }
-}
-
-// استخدام الآلة الحاسبة
-const calc = new Calculator();
-console.log('5 + 3 =', calc.add(5, 3));
-console.log('10 × 4 =', calc.multiply(10, 4));`;
-                    
-                    explanation = 'آلة حاسبة متكاملة مع دوال علمية';
-                }
-            }
-            else if (request.includes('تويتر') || request.includes('twitter') || request.includes('تغريدة')) {
-                if (language === 'javascript') {
-                    script = `// سكربت لنشر تغريدات تلقائية - بواسطة الذكاء الاصطناعي
-// ملاحظة: تحتاج مفاتيح API من تويتر
-
-const axios = require('axios');
-const OAuth = require('oauth-1.0a');
-const crypto = require('crypto');
-
-class TwitterBot {
-    constructor(apiKey, apiSecret, accessToken, tokenSecret) {
-        this.apiKey = apiKey;
-        this.apiSecret = apiSecret;
-        this.accessToken = accessToken;
-        this.tokenSecret = tokenSecret;
-        
-        this.oauth = OAuth({
-            consumer: { key: apiKey, secret: apiSecret },
-            signature_method: 'HMAC-SHA1',
-            hash_function(base_string, key) {
-                return crypto
-                    .createHmac('sha1', key)
-                    .update(base_string)
-                    .digest('base64');
-            }
-        });
-    }
-    
-    async tweet(message) {
-        const url = 'https://api.twitter.com/1.1/statuses/update.json';
-        const authHeader = this.oauth.toHeader(this.oauth.authorize({
-            url,
-            method: 'POST',
-            data: { status: message }
-        }, { key: this.accessToken, secret: this.tokenSecret }));
-        
-        try {
-            const response = await axios.post(url, 
-                { status: message },
-                { headers: { ...authHeader, 'Content-Type': 'application/x-www-form-urlencoded' } }
-            );
-            return response.data;
-        } catch (error) {
-            console.error('خطأ في التغريدة:', error.response.data);
-            throw error;
-        }
-    }
-}
-
-// مثال للاستخدام
-const bot = new TwitterBot('API_KEY', 'API_SECRET', 'ACCESS_TOKEN', 'TOKEN_SECRET');
-bot.tweet('مرحباً من الذكاء الاصطناعي الفائق! 🤖');`;
-                    
-                    explanation = 'سكربت متكامل للتعامل مع تويتر - ينشر تغريدات ويقرأ المنشن';
-                }
-            }
-            else if (request.includes('chat') || request.includes('محادثة') || request.includes('بوت')) {
-                if (language === 'python') {
-                    script = `# بوت محادثة ذكي - مبرمج بالذكاء الاصطناعي
-import nltk
-from nltk.chat.util import Chat, reflections
-
-# تعريف أنماط المحادثة
-patterns = [
-    (r'مرحبا|السلام عليكم|هلا', 
-     ['وعليكم السلام! كيف يمكنني مساعدتك؟']),
-    (r'كيف حالك', 
-     ['أنا بخير، شكراً لك! كيف أنت؟']),
-    (r'ما اسمك', 
-     ['أنا بوت ذكي تم برمجتي بواسطة الذكاء الاصطناعي']),
-    (r'(.*) عمرك (.*)', 
-     ['عمري بضع دقائق فقط! 😊']),
-    (r'(.*) شكرا (.*)', 
-     ['العفو، دائماً في الخدمة!']),
-]
-
-# إنشاء البوت
-chatbot = Chat(patterns, reflections)
-
-# تشغيل المحادثة
-print("البوت الذكي جاهز للمحادثة - اكتب 'خروج' للإنهاء")
-while True:
-    user_input = input("أنت: ")
-    if user_input.lower() in ['خروج', 'quit', 'exit']:
-        print("البوت: مع السلامة!")
-        break
-    response = chatbot.respond(user_input)
-    print(f"البوت: {response}")`;
-                    
-                    explanation = 'بوت محادثة متكامل بلغة Python';
-                }
-            }
-            else {
-                // سكربت افتراضي حسب الطلب
-                if (language === 'javascript') {
-                    script = `// سكربت ${request} - تمت برمجته بواسطة الذكاء الاصطناعي الفائق
-// هذا سكربت مخصص حسب طلبك
-
-async function processRequest() {
-    try {
-        // الكود الرئيسي
-        console.log('جاري تنفيذ: ${request}');
-        
-        // أضف منطقك هنا
-        const result = await performTask();
-        
-        return {
-            success: true,
-            data: result,
-            timestamp: new Date().toISOString()
-        };
-    } catch (error) {
-        console.error('خطأ:', error);
-        return {
-            success: false,
-            error: error.message
-        };
-    }
-}
-
-async function performTask() {
-    // هذا الجزء يتم تخصيصه حسب متطلباتك
-    return {
-        message: 'تم تنفيذ السكربت بنجاح',
-        request: '${request}',
-        ai: 'الذكاء الاصطناعي الفائق'
-    };
-}
-
-// تشغيل السكربت
-processRequest().then(console.log);`;
-                    
-                    explanation = `سكربت مخصص لـ: ${request}`;
-                }
-            }
-            
-            // حفظ السكربت
-            const scriptObj = {
-                id: Date.now(),
-                title: `سكربت ${language}: ${request.substring(0, 30)}`,
-                code: script,
-                language: language,
-                explanation: explanation,
-                timestamp: new Date().toLocaleString('ar-SA')
-            };
-            
-            generatedScripts.unshift(scriptObj);
-            
-            // عرض السكربت
-            displayScript(scriptObj);
-            
-            return script;
-        }
-
-        // عرض السكربت في المحادثة والشريط الجانبي
-        function displayScript(scriptObj) {
-            // عرض في المحادثة
-            const message = `✅ **تم برمجة السكربت بنجاح!**
-
-**الوصف:** ${scriptObj.explanation}
-**اللغة:** ${scriptObj.language}
-**الوقت:** ${scriptObj.timestamp}
-
-\`\`\`${scriptObj.language}
-${scriptObj.code}
-\`\`\`
-
-يمكنك نسخ الكود واستخدامه مباشرة. هل تريدني برمجة شيء آخر؟`;
-            
-            addMessage(message, 'ai');
-            
-            // تحديث الشريط الجانبي
-            sidebarContent.innerHTML = generatedScriptsHTML();
-        }
-
-        // عرض السكربتات المولدة
-        function generatedScriptsHTML() {
-            if (generatedScripts.length === 0) return '';
-            
-            let html = '<h3 style="margin-top: 30px;"><i class="fas fa-code" style="color: #88ddff;"></i> السكربتات المولدة</h3>';
-            
-            generatedScripts.forEach((script, index) => {
-                html += `
-                    <div class="generated-script">
-                        <div class="script-title">
-                            <i class="fas fa-file-code"></i>
-                            ${script.title}
+                        <div class="stat-value">250+</div>
+                        <div class="stat-label">Daily Players</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-server"></i>
                         </div>
-                        <div class="script-preview">
-                            ${script.code.substring(0, 150)}...
+                        <div class="stat-value">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                        <div style="margin-top: 12px; display: flex; gap: 8px;">
-                            <button onclick="copyScript('${script.id}')" class="copy-btn" style="background: #0055ff;">
-                                <i class="fas fa-copy"></i> نسخ
-                            </button>
-                            <span style="color: #8899bb; font-size: 12px;">${script.language}</span>
+                        <div class="stat-value">30ms</div>
+                        <div class="stat-label">Average Ping</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Secure</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section id="store" class="store-section">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-store"></i> Premium Store
+                </div>
+                <h2 class="section-title animate__animated animate__fadeInUp">
+                    HorexMC Store
+                </h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    Upgrade your gameplay with premium ranks, exclusive guild features and special items. 
+                    Dominate the server with style.
+                </p>
+            </div>
+
+            <!-- Ranks Grid -->
+            <div class="ranks-grid" id="ranksSection">
+                <div class="rank-card animate__animated animate__fadeInUp">
+                    <div class="rank-badge">Popular</div>
+                    <div class="rank-icon gold-rank">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="rank-title">Gold Rank</h3>
+                    <p class="rank-description">
+                        Perfect for starters who want to enhance their basic gameplay experience.
+                    </p>
+                    <div class="rank-price">$4.99<span>/one-time</span></div>
+                    <ul class="rank-features">
+                        <li><i class="fas fa-check"></i> Gold prefix in chat</li>
+                        <li><i class="fas fa-check"></i> 3 homes</li>
+                        <li><i class="fas fa-check"></i> Access to /fly</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Basic particle effects</li>
+                    </ul>
+                    <button class="rank-btn" data-rank="gold" data-price="4.99">
+                        <i class="fas fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="rank-card featured animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="rank-badge" style="background: var(--diamond-color); color: var(--primary-dark);">
+                        Best Value
+                    </div>
+                    <div class="rank-icon diamond-rank">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="rank-title">Diamond Rank</h3>
+                    <p class="rank-description">
+                        The most popular choice for serious players who want the complete experience.
+                    </p>
+                    <div class="rank-price">$9.99<span>/one-time</span></div>
+                    <ul class="rank-features">
+                        <li><i class="fas fa-check featured"></i> Diamond prefix</li>
+                        <li><i class="fas fa-check featured"></i> 5 homes</li>
+                        <li><i class="fas fa-check featured"></i> /feed & /heal commands</li>
+                        <li><i class="fas fa-check featured"></i> Color chat</li>
+                        <li><i class="fas fa-check featured"></i> Advanced particle effects</li>
+                        <li><i class="fas fa-check featured"></i> Nickname system</li>
+                        <li><i class="fas fa-check featured"></i> Pet system access</li>
+                    </ul>
+                    <button class="rank-btn" data-rank="diamond" data-price="9.99">
+                        <i class="fas fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="rank-card animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="rank-badge" style="background: var(--emerald-color);">Premium</div>
+                    <div class="rank-icon emerald-rank">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="rank-title">Emerald Rank</h3>
+                    <p class="rank-description">
+                        For dedicated players who want maximum benefits and exclusive features.
+                    </p>
+                    <div class="rank-price">$19.99<span>/one-time</span></div>
+                    <ul class="rank-features">
+                        <li><i class="fas fa-check"></i> Emerald prefix</li>
+                        <li><i class="fas fa-check"></i> 10 homes</li>
+                        <li><i class="fas fa-check"></i> All VIP commands</li>
+                        <li><i class="fas fa-check"></i> Custom nickname</li>
+                        <li><i class="fas fa-check"></i> Full pet system</li>
+                        <li><i class="fas fa-check"></i> Vanish mode</li>
+                        <li><i class="fas fa-check"></i> Fly anywhere</li>
+                        <li><i class="fas fa-check"></i> Weather control</li>
+                    </ul>
+                    <button class="rank-btn" data-rank="emerald" data-price="19.99">
+                        <i class="fas fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guilds Section -->
+        <section id="guilds" class="guilds-section">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-users"></i> Guild System
+                </div>
+                <h2 class="section-title animate__animated animate__fadeInUp">
+                    Create Your Legacy
+                </h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    Establish powerful guilds, dominate territories, and build your community.
+                </p>
+            </div>
+
+            <div class="guilds-container">
+                <div class="guild-card animate__animated animate__fadeIn">
+                    <div class="guild-icon">
+                        <i class="fas fa-chess-king"></i>
+                    </div>
+                    <h3 class="guild-title">Guild Creation Package</h3>
+                    <p class="guild-description">
+                        Create your own guild with a custom tag, exclusive guild base, and advanced management tools. 
+                        Lead your team to victory with special guild-only features and perks.
+                    </p>
+                    <div class="guild-price">$24.99</div>
+                    <button class="rank-btn" data-guild="guild" data-price="24.99">
+                        <i class="fas fa-crown"></i>
+                        Create Guild
+                    </button>
+                    
+                    <div class="guild-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <h3>Custom Tag</h3>
+                            <p>Unique guild identifier visible to everyone</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Guild Base</h3>
+                            <p>Exclusive territory for your guild members</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Guild Wars</h3>
+                            <p>Challenge other guilds and climb ranks</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Statistics</h3>
+                            <p>Track your guild's progress and achievements</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RedStonePvP Section -->
+        <section id="pvp" class="store-section">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-gamepad"></i> PvP Arena
+                </div>
+                <h2 class="section-title animate__animated animate__fadeInUp">
+                    RedStonePvP
+                </h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    The ultimate PvP experience with custom kits, ranked matches, and exclusive rewards.
+                </p>
+            </div>
+
+            <div class="coming-soon animate__animated animate__pulse animate__infinite">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-white);">
+                    Under Development
+                </h2>
+                <p style="font-size: 1.2rem; color: var(--accent-silver); max-width: 600px; margin: 0 auto;">
+                    RedStonePvP is currently in development. Stay tuned for the ultimate PvP experience!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <svg class="footer-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 2L13 7H19V9H14.46L16.5 14H21V16H18.46L20.5 21L15 16H9L3 21L5 16H2V14H7.5L9.54 9H5V7H11L13 2H11Z" 
+                          fill="currentColor"/>
+                </svg>
+                <p class="footer-description">
+                    HorexMC is a premium Minecraft server offering unique gameplay experiences, 
+                    exclusive features, and a thriving community. Join us today!
+                </p>
+                <div class="footer-social">
+                    <a href="https://discord.gg/horexmc" class="social-link discord" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" class="social-link twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#store"><i class="fas fa-store"></i> Store</a></li>
+                    <li><a href="#ranks"><i class="fas fa-crown"></i> Ranks</a></li>
+                    <li><a href="#guilds"><i class="fas fa-users"></i> Guilds</a></li>
+                    <li><a href="#pvp"><i class="fas fa-gamepad"></i> RedStonePvP</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Refund Policy</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Server Info</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-server"></i> IP: play.horexmc.net</a></li>
+                    <li><a href="#"><i class="fas fa-globe"></i> Version: 1.8 - 1.20</a></li>
+                    <li><a href="#"><i class="fas fa-signal"></i> Status: Online</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Players: 250+</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Uptime: 99.9%</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 HorexMC. All rights reserved.<br>
+                Not affiliated with Mojang or Microsoft.
+            </div>
+            <div class="footer-legal">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // ============================================
+        // CONFIGURATION & STATE MANAGEMENT
+        // ============================================
+        const CONFIG = {
+            serverIP: 'play.horexmc.net',
+            discordURL: 'https://discord.gg/horexmc',
+            storeName: 'HorexMC Store',
+            currency: 'USD',
+            taxRate: 0.08, // 8% tax
+            defaultUsername: 'txgom',
+            defaultCredits: 1500
+        };
+
+        class StateManager {
+            constructor() {
+                this.cart = this.loadCart();
+                this.user = this.loadUser();
+                this.notifications = [];
+                this.currentPage = 'home';
+            }
+
+            loadCart() {
+                const saved = localStorage.getItem('horexmc_cart');
+                return saved ? JSON.parse(saved) : [];
+            }
+
+            saveCart() {
+                localStorage.setItem('horexmc_cart', JSON.stringify(this.cart));
+                this.updateCartUI();
+            }
+
+            loadUser() {
+                return {
+                    username: localStorage.getItem('horexmc_username') || CONFIG.defaultUsername,
+                    email: 'player@horexmc.net',
+                    credits: parseInt(localStorage.getItem('horexmc_credits')) || CONFIG.defaultCredits,
+                    joinDate: '2024-01-01',
+                    status: 'online'
+                };
+            }
+
+            saveUser() {
+                localStorage.setItem('horexmc_username', this.user.username);
+                localStorage.setItem('horexmc_credits', this.user.credits.toString());
+                this.updateUserUI();
+            }
+        }
+
+        // ============================================
+        // DOM ELEMENTS & INITIALIZATION
+        // ============================================
+        const state = new StateManager();
+        const elements = {
+            // Loading
+            loadingScreen: document.getElementById('loadingScreen'),
+            loadingProgress: document.getElementById('loadingProgress'),
+            
+            // Navigation
+            topNav: document.getElementById('topNav'),
+            navLinks: document.querySelectorAll('.nav-link'),
+            
+            // User Profile
+            profileTrigger: document.getElementById('profileTrigger'),
+            profileDropdown: document.getElementById('profileDropdown'),
+            profileName: document.getElementById('profileName'),
+            dropdownUsername: document.getElementById('dropdownUsername'),
+            creditsAmount: document.getElementById('creditsAmount'),
+            
+            // Profile Actions
+            editProfileBtn: document.getElementById('editProfileBtn'),
+            purchaseHistoryBtn: document.getElementById('purchaseHistoryBtn'),
+            settingsBtn: document.getElementById('settingsBtn'),
+            supportTicketBtn: document.getElementById('supportTicketBtn'),
+            logoutBtn: document.getElementById('logoutBtn'),
+            
+            // Cart
+            cartIcon: document.getElementById('cartIcon'),
+            cartCount: document.getElementById('cartCount'),
+            cartSidebar: document.getElementById('cartSidebar'),
+            closeCart: document.getElementById('closeCart'),
+            cartContent: document.getElementById('cartContent'),
+            emptyCart: document.getElementById('emptyCart'),
+            cartItems: document.getElementById('cartItems'),
+            cartFooter: document.getElementById('cartFooter'),
+            cartSubtotal: document.getElementById('cartSubtotal'),
+            cartTax: document.getElementById('cartTax'),
+            cartTotal: document.getElementById('cartTotal'),
+            checkoutBtn: document.getElementById('checkoutBtn'),
+            clearCartBtn: document.getElementById('clearCartBtn'),
+            
+            // Hero Actions
+            joinServerBtn: document.getElementById('joinServerBtn'),
+            exploreStoreBtn: document.getElementById('exploreStoreBtn'),
+            
+            // Store
+            rankButtons: document.querySelectorAll('.rank-btn[data-rank]'),
+            guildButtons: document.querySelectorAll('.rank-btn[data-guild]'),
+            
+            // Notification
+            notificationContainer: document.getElementById('notificationContainer')
+        };
+
+        // ============================================
+        // LOADING SYSTEM
+        // ============================================
+        function initializeLoading() {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 20;
+                if (progress > 100) progress = 100;
+                elements.loadingProgress.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        elements.loadingScreen.classList.add('fade-out');
+                        setTimeout(() => {
+                            elements.loadingScreen.style.display = 'none';
+                            initializeBackgroundParticles();
+                            showNotification('Welcome!', 'HorexMC Store loaded successfully!', 'success');
+                        }, 500);
+                    }, 500);
+                }
+            }, 100);
+        }
+
+        // ============================================
+        // BACKGROUND PARTICLE SYSTEM
+        // ============================================
+        function initializeBackgroundParticles() {
+            const particleField = document.getElementById('particleField');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() * 60 + 20;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                const opacity = Math.random() * 0.15 + 0.05;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.opacity = opacity.toString();
+                particle.style.animation = `floatElement ${duration}s ease-in-out ${delay}s infinite`;
+                
+                // Custom animation
+                particle.style.animation = `
+                    floatElement ${duration}s ease-in-out ${delay}s infinite,
+                    particlePulse ${duration * 0.5}s ease-in-out ${delay}s infinite
                 `;
-            });
+                
+                particleField.appendChild(particle);
+            }
             
-            return html;
-        }
-
-        // ------------------------------------------------------
-        // تحليل المواقع
-        // ------------------------------------------------------
-        async function analyzeWebsite(url) {
-            addThinking(`جاري تحليل الموقع: ${url}`);
-            
-            try {
-                // تنظيف الرابط
-                url = url.replace(/^(ابحث عن|حلل|موقع|تحليل)\s*/i, '').trim();
-                if (!url.startsWith('http')) {
-                    url = 'https://' + url;
+            // Add CSS for custom animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatElement {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    25% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(1.1); }
+                    50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(0.9); }
+                    75% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(1.05); }
                 }
                 
-                // استخدام واجهة تحليل المواقع
-                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-                const data = await response.json();
-                
-                if (data.contents) {
-                    const titleMatch = data.contents.match(/<title>(.*?)<\/title>/i);
-                    const title = titleMatch ? titleMatch[1] : 'بدون عنوان';
-                    
-                    const analysis = `
-**تحليل الموقع:** ${url}
-
-**العنوان:** ${title}
-**الحالة:** متصل ✅
-**وقت التحليل:** ${new Date().toLocaleString('ar-SA')}
-
-**ملخص سريع:**
-- الموقع يعمل بشكل طبيعي
-- تم تحليل المحتوى بنجاح
-- جاهز لاستخراج البيانات
-
-هل تريد استخراج بيانات محددة من الموقع؟`;
-                    
-                    addMessage(analysis, 'ai');
-                    return analysis;
+                @keyframes particlePulse {
+                    0%, 100% { opacity: ${Math.random() * 0.1 + 0.05}; }
+                    50% { opacity: ${Math.random() * 0.3 + 0.1}; }
                 }
-            } catch (error) {
-                addMessage(`❌ حدث خطأ في تحليل الموقع: ${error.message}`, 'ai');
-                return null;
-            }
-        }
-
-        // ------------------------------------------------------
-        // معالجة الأوامر
-        // ------------------------------------------------------
-        async function processCommand(input) {
-            input = input.toLowerCase().trim();
-            
-            // أمر البحث في قوقل
-            if (input.includes('ابحث عن') || input.includes('بحث') || input.includes('قوقل') || input.includes('google')) {
-                const query = input.replace(/ابحث عن|بحث|في قوقل|قوقل|google|عن/gi, '').trim();
-                if (query) {
-                    const results = await searchGoogle(query);
-                    return results;
-                }
-            }
-            
-            // أمر برمجة سكربت
-            else if (input.includes('برمج') || input.includes('سكربت') || input.includes('اكتب كود') || input.includes('code') || input.includes('script')) {
-                const task = input.replace(/برمج|سكربت|اكتب|كود|لي|this|code|script/gi, '').trim();
-                if (task) {
-                    const script = await generateScript(task);
-                    return script;
-                }
-            }
-            
-            // أمر تحليل موقع
-            else if (input.includes('حلل') || input.includes('موقع') || input.includes('تحليل') || input.includes('website')) {
-                const url = input.replace(/حلل|موقع|تحليل|analyse|website/gi, '').trim();
-                if (url) {
-                    await analyzeWebsite(url);
-                    return "تم تحليل الموقع، راجع النتائج أعلاه";
-                }
-            }
-            
-            // أمر المساعدة
-            else if (input.includes('مساعدة') || input.includes('اوامر') || input.includes('help')) {
-                return `**قائمة الأوامر المتاحة:** 🤖
-
-🔍 **البحث في قوقل:**
-• "ابحث عن أفضل مواقع التعلم"
-• "بحث في قوقل عن الذكاء الاصطناعي"
-
-💻 **برمجة سكربتات:**
-• "برمج آلة حاسبة بالجافاسكريبت"
-• "سكربت بوت تويتر بايثون"
-• "اكتب كود موقع بسيط"
-
-🌐 **تحليل مواقع:**
-• "حلل موقع example.com"
-• "تحليل https://google.com"
-
-**جرب الآن!** اكتب أي أمر وسأنفذه فوراً.`;
-            }
-            
-            // ردود ذكية
-            else {
-                const responses = [
-                    "نعم، كيف يمكنني مساعدتك؟ يمكنني البحث في قوقل أو برمجة أي سكربت تريده.",
-                    "أنا هنا! جرب أن تطلب مني البحث عن شيء أو برمجة سكربت معين.",
-                    "هل تريد مني البحث عن معلومات معينة؟ أو برمجة تطبيق؟"
-                ];
-                return responses[Math.floor(Math.random() * responses.length)];
-            }
-        }
-
-        // ------------------------------------------------------
-        // وظائف مساعدة
-        // ------------------------------------------------------
-        function addMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            
-            const avatar = document.createElement('div');
-            avatar.classList.add('message-avatar');
-            if (sender === 'user') {
-                avatar.innerHTML = '<i class="fas fa-user"></i>';
-            } else {
-                avatar.innerHTML = '<i class="fas fa-robot"></i>';
-            }
-            
-            const content = document.createElement('div');
-            content.classList.add('message-content');
-            
-            // تحويل markdown البسيط
-            let formattedText = text
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                .replace(/```(\w+)?\n([\s\S]*?)```/g, function(match, lang, code) {
-                    return `<div class="code-block">
-                        <div class="code-header">
-                            <span style="color: #88ddff;">${lang || 'code'}</span>
-                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> نسخ</button>
-                        </div>
-                        <pre style="margin:0; font-family: monospace;">${code}</pre>
-                    </div>`;
-                });
-            
-            content.innerHTML = formattedText + `<div style="font-size: 11px; color: #99aacc; margin-top: 8px;">${new Date().toLocaleTimeString('ar-SA')}</div>`;
-            
-            if (sender === 'user') {
-                messageDiv.appendChild(content);
-                messageDiv.appendChild(avatar);
-            } else {
-                messageDiv.appendChild(avatar);
-                messageDiv.appendChild(content);
-            }
-            
-            chatbox.appendChild(messageDiv);
-            chatbox.scrollTop = chatbox.scrollHeight;
-        }
-
-        function addThinking(text) {
-            const thinkingDiv = document.createElement('div');
-            thinkingDiv.classList.add('thinking');
-            thinkingDiv.innerHTML = `
-                <span></span><span></span><span></span>
-                <span style="color: #aaddff; margin-right: 10px;">${text}</span>
             `;
-            chatbox.appendChild(thinkingDiv);
-            chatbox.scrollTop = chatbox.scrollHeight;
-            
-            // حذف تفكير بعد ثانية
-            setTimeout(() => {
-                if (thinkingDiv.parentNode) {
-                    thinkingDiv.remove();
+            document.head.appendChild(style);
+        }
+
+        // ============================================
+        // NAVIGATION SYSTEM
+        // ============================================
+        function initializeNavigation() {
+            // Scroll effect on navigation
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    elements.topNav.classList.add('scrolled');
+                } else {
+                    elements.topNav.classList.remove('scrolled');
                 }
-            }, 1500);
-        }
+            });
 
-        // إرسال الرسالة
-        async function sendMessage() {
-            const text = userInput.value.trim();
-            if (!text) return;
-            
-            addMessage(text, 'user');
-            userInput.value = '';
-            sendBtn.disabled = true;
-            
-            try {
-                const response = await processCommand(text);
-                if (response) {
-                    addMessage(response, 'ai');
-                }
-            } catch (error) {
-                addMessage('❌ حدث خطأ: ' + error.message, 'ai');
-            } finally {
-                sendBtn.disabled = false;
-                userInput.focus();
-            }
-        }
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Update active nav link
+                        elements.navLinks.forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Smooth scroll
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
 
-        // نسخ الكود
-        window.copyCode = function(button) {
-            const pre = button.closest('.code-block').querySelector('pre');
-            const code = pre.innerText;
-            navigator.clipboard.writeText(code);
-            button.innerHTML = '<i class="fas fa-check"></i> تم!';
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-copy"></i> نسخ';
-            }, 2000);
-        };
-
-        window.copyScript = function(id) {
-            const script = generatedScripts.find(s => s.id == id);
-            if (script) {
-                navigator.clipboard.writeText(script.code);
-                alert('تم نسخ السكربت!');
-            }
-        };
-
-        function clearChat() {
-            chatbox.innerHTML = '';
-            addMessage('تم مسح المحادثة. أنا جاهز للبحث والبرمجة!', 'ai');
-        }
-
-        function formatSearchResults(items) {
-            if (!items || items.length === 0) {
-                return "❌ لم أجد نتائج للبحث";
+            // Set active nav link based on scroll position
+            function updateActiveNavLink() {
+                const scrollPosition = window.scrollY + 100;
+                
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        elements.navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
             }
             
-            let response = "🔍 **نتائج البحث المباشر:**\n\n";
-            items.slice(0, 3).forEach((item, i) => {
-                response += `${i+1}. **${item.title || 'عنوان'}**\n`;
-                response += `${item.snippet || 'لا يوجد وصف'}\n`;
-                response += `[رابط المصدر](${item.link || '#'})\n\n`;
+            window.addEventListener('scroll', updateActiveNavLink);
+            updateActiveNavLink(); // Initial call
+        }
+
+        // ============================================
+        // USER PROFILE SYSTEM
+        // ============================================
+        function initializeUserProfile() {
+            // Update user info
+            function updateUserUI() {
+                elements.profileName.textContent = state.user.username;
+                elements.dropdownUsername.textContent = state.user.username;
+                elements.creditsAmount.textContent = state.user.credits.toLocaleString();
+            }
+            
+            // Toggle dropdown
+            elements.profileTrigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                elements.profileDropdown.classList.toggle('active');
             });
             
-            return response;
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!elements.profileTrigger.contains(e.target) && !elements.profileDropdown.contains(e.target)) {
+                    elements.profileDropdown.classList.remove('active');
+                }
+            });
+            
+            // Edit Profile
+            elements.editProfileBtn.addEventListener('click', () => {
+                const newUsername = prompt('Enter new username:', state.user.username);
+                if (newUsername && newUsername.trim().length >= 3 && newUsername.trim().length <= 20) {
+                    state.user.username = newUsername.trim();
+                    state.saveUser();
+                    showNotification('Profile Updated', 'Username changed successfully!', 'success');
+                    elements.profileDropdown.classList.remove('active');
+                } else if (newUsername) {
+                    showNotification('Invalid Username', 'Username must be 3-20 characters', 'error');
+                }
+            });
+            
+            // Purchase History
+            elements.purchaseHistoryBtn.addEventListener('click', () => {
+                showNotification('Coming Soon', 'Purchase history feature is under development', 'info');
+                elements.profileDropdown.classList.remove('active');
+            });
+            
+            // Settings
+            elements.settingsBtn.addEventListener('click', () => {
+                showNotification('Coming Soon', 'Settings panel is under development', 'info');
+                elements.profileDropdown.classList.remove('active');
+            });
+            
+            // Support Tickets
+            elements.supportTicketBtn.addEventListener('click', () => {
+                window.open(CONFIG.discordURL, '_blank');
+                elements.profileDropdown.classList.remove('active');
+            });
+            
+            // Logout
+            elements.logoutBtn.addEventListener('click', () => {
+                if (confirm('Are you sure you want to logout?')) {
+                    showNotification('Logged Out', 'You have been logged out successfully', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                }
+            });
+            
+            updateUserUI();
+            state.updateUserUI = updateUserUI;
         }
 
-        function loadAPIKeys() {
-            // محاولة تحميل مفاتيح API من localStorage
-            const savedKey = localStorage.getItem('google_api_key');
-            if (savedKey) {
-                GOOGLE_API_KEY = savedKey;
+        // ============================================
+        // SHOPPING CART SYSTEM
+        // ============================================
+        function initializeCart() {
+            // Update cart UI
+            function updateCartUI() {
+                const itemCount = state.cart.reduce((total, item) => total + item.quantity, 0);
+                elements.cartCount.textContent = itemCount;
+                
+                if (state.cart.length === 0) {
+                    elements.emptyCart.style.display = 'block';
+                    elements.cartItems.style.display = 'none';
+                    elements.cartFooter.style.display = 'none';
+                    return;
+                }
+                
+                elements.emptyCart.style.display = 'none';
+                elements.cartItems.style.display = 'flex';
+                elements.cartFooter.style.display = 'block';
+                
+                // Clear current items
+                elements.cartItems.innerHTML = '';
+                
+                let subtotal = 0;
+                
+                // Add items to cart
+                state.cart.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <div class="cart-item-icon">
+                            <i class="${getItemIcon(item.type)}"></i>
+                        </div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn decrease-quantity" data-index="${index}">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn increase-quantity" data-index="${index}">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="cart-item-remove" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    elements.cartItems.appendChild(itemElement);
+                    
+                    subtotal += item.price * item.quantity;
+                });
+                
+                // Calculate totals
+                const tax = subtotal * CONFIG.taxRate;
+                const total = subtotal + tax;
+                
+                // Update totals display
+                elements.cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+                elements.cartTax.textContent = `$${tax.toFixed(2)}`;
+                elements.cartTotal.textContent = `$${total.toFixed(2)}`;
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.decrease-quantity').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = parseInt(e.currentTarget.dataset.index);
+                        decreaseQuantity(index);
+                    });
+                });
+                
+                document.querySelectorAll('.increase-quantity').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = parseInt(e.currentTarget.dataset.index);
+                        increaseQuantity(index);
+                    });
+                });
+                
+                document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = parseInt(e.currentTarget.dataset.index);
+                        removeFromCart(index);
+                    });
+                });
             }
+            
+            // Helper function to get item icon
+            function getItemIcon(type) {
+                const icons = {
+                    'gold': 'fas fa-crown',
+                    'diamond': 'fas fa-gem',
+                    'emerald': 'fas fa-gem',
+                    'special': 'fas fa-star',
+                    'guild': 'fas fa-users'
+                };
+                return icons[type] || 'fas fa-box';
+            }
+            
+            // Add to cart function
+            function addToCart(item) {
+                const existingItemIndex = state.cart.findIndex(cartItem => 
+                    cartItem.name === item.name && cartItem.type === item.type
+                );
+                
+                if (existingItemIndex !== -1) {
+                    state.cart[existingItemIndex].quantity += 1;
+                } else {
+                    state.cart.push({
+                        ...item,
+                        quantity: 1,
+                        id: Date.now()
+                    });
+                }
+                
+                state.saveCart();
+                showNotification('Added to Cart', `${item.name} has been added to your cart`, 'success');
+                
+                // Open cart sidebar
+                if (!elements.cartSidebar.classList.contains('active')) {
+                    elements.cartSidebar.classList.add('active');
+                }
+            }
+            
+            // Remove from cart
+            function removeFromCart(index) {
+                if (index >= 0 && index < state.cart.length) {
+                    const removedItem = state.cart[index];
+                    state.cart.splice(index, 1);
+                    state.saveCart();
+                    showNotification('Removed', `${removedItem.name} removed from cart`, 'info');
+                }
+            }
+            
+            // Increase quantity
+            function increaseQuantity(index) {
+                if (index >= 0 && index < state.cart.length) {
+                    state.cart[index].quantity += 1;
+                    state.saveCart();
+                }
+            }
+            
+            // Decrease quantity
+            function decreaseQuantity(index) {
+                if (index >= 0 && index < state.cart.length) {
+                    if (state.cart[index].quantity > 1) {
+                        state.cart[index].quantity -= 1;
+                        state.saveCart();
+                    } else {
+                        removeFromCart(index);
+                    }
+                }
+            }
+            
+            // Clear cart
+            function clearCart() {
+                if (state.cart.length === 0) return;
+                
+                if (confirm('Are you sure you want to clear your cart?')) {
+                    state.cart = [];
+                    state.saveCart();
+                    showNotification('Cart Cleared', 'All items have been removed from your cart', 'info');
+                }
+            }
+            
+            // Toggle cart sidebar
+            elements.cartIcon.addEventListener('click', () => {
+                elements.cartSidebar.classList.add('active');
+            });
+            
+            elements.closeCart.addEventListener('click', () => {
+                elements.cartSidebar.classList.remove('active');
+            });
+            
+            // Clear cart button
+            elements.clearCartBtn.addEventListener('click', clearCart);
+            
+            // Checkout button
+            elements.checkoutBtn.addEventListener('click', () => {
+                if (state.cart.length === 0) {
+                    showNotification('Empty Cart', 'Your cart is empty!', 'warning');
+                    return;
+                }
+                
+                const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const totalWithTax = total + (total * CONFIG.taxRate);
+                
+                showNotification(
+                    'Checkout Coming Soon', 
+                    `Total: $${totalWithTax.toFixed(2)} - Payment system under development`, 
+                    'info'
+                );
+            });
+            
+            // Close cart when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!elements.cartSidebar.contains(e.target) && !elements.cartIcon.contains(e.target)) {
+                    elements.cartSidebar.classList.remove('active');
+                }
+            });
+            
+            // Store button handlers
+            elements.rankButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const rank = button.dataset.rank;
+                    const price = parseFloat(button.dataset.price);
+                    const rankNames = {
+                        'gold': 'Gold Rank',
+                        'diamond': 'Diamond Rank',
+                        'emerald': 'Emerald Rank',
+                        'special': 'Special Rank'
+                    };
+                    
+                    addToCart({
+                        type: rank,
+                        name: rankNames[rank],
+                        price: price
+                    });
+                });
+            });
+            
+            elements.guildButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const guild = button.dataset.guild;
+                    const price = parseFloat(button.dataset.price);
+                    
+                    addToCart({
+                        type: 'guild',
+                        name: 'Guild Creation Package',
+                        price: price
+                    });
+                });
+            });
+            
+            // Initial cart update
+            updateCartUI();
+            state.updateCartUI = updateCartUI;
         }
 
-        // أحداث
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
+        // ============================================
+        // NOTIFICATION SYSTEM
+        // ============================================
+        function showNotification(title, message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            
+            const icons = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-exclamation-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'info': 'fas fa-info-circle'
+            };
+            
+            notification.innerHTML = `
+                <div class="notification-icon">
+                    <i class="${icons[type] || 'fas fa-info-circle'}"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">${title}</div>
+                    <div class="notification-message">${message}</div>
+                </div>
+                <button class="notification-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            elements.notificationContainer.appendChild(notification);
+            
+            // Add show class after a delay for animation
+            setTimeout(() => notification.classList.add('show'), 10);
+            
+            // Close button
+            notification.querySelector('.notification-close').addEventListener('click', () => {
+                closeNotification(notification);
+            });
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    closeNotification(notification);
+                }
+            }, 5000);
+            
+            state.notifications.push(notification);
+        }
+        
+        function closeNotification(notification) {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+                state.notifications = state.notifications.filter(n => n !== notification);
+            }, 300);
+        }
+
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Copied!', 'Text copied to clipboard', 'success');
+            }).catch(err => {
+                showNotification('Error', 'Failed to copy text', 'error');
+                console.error('Copy failed:', err);
+            });
+        }
+
+        // ============================================
+        // EVENT HANDLERS
+        // ============================================
+        function initializeEventHandlers() {
+            // Join Server Button
+            elements.joinServerBtn.addEventListener('click', () => {
+                copyToClipboard(CONFIG.serverIP);
+                showNotification('Server IP Copied!', `Connect using: ${CONFIG.serverIP}`, 'success');
+            });
+            
+            // Explore Store Button
+            elements.exploreStoreBtn.addEventListener('click', () => {
+                document.querySelector('#store').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Discord Links
+            document.querySelectorAll('a[href*="discord"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.open(CONFIG.discordURL, '_blank');
+                });
+            });
+            
+            // Copy IP from footer
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                if (link.textContent.includes('IP:')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        copyToClipboard(CONFIG.serverIP);
+                    });
+                }
+            });
+        }
+
+        // ============================================
+        // KEYBOARD SHORTCUTS
+        // ============================================
+        function initializeKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + S to open store
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    e.preventDefault();
+                    document.querySelector('#store').scrollIntoView({ behavior: 'smooth' });
+                    showNotification('Store', 'Navigated to store section', 'info');
+                }
+                
+                // Ctrl/Cmd + C to copy IP
+                if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+                    e.preventDefault();
+                    copyToClipboard(CONFIG.serverIP);
+                }
+                
+                // Escape to close modals
+                if (e.key === 'Escape') {
+                    elements.profileDropdown.classList.remove('active');
+                    elements.cartSidebar.classList.remove('active');
+                }
+                
+                // Ctrl/Cmd + B to toggle cart
+                if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+                    e.preventDefault();
+                    elements.cartSidebar.classList.toggle('active');
+                }
+            });
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        function initializeApp() {
+            initializeLoading();
+            initializeNavigation();
+            initializeUserProfile();
+            initializeCart();
+            initializeEventHandlers();
+            initializeKeyboardShortcuts();
+            
+            // Add animation classes on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.rank-card, .feature-card, .hero-stat').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Initial notifications
+            setTimeout(() => {
+                if (state.cart.length === 0) {
+                    showNotification(
+                        'Welcome to HorexMC Store!', 
+                        'Browse our premium ranks and guild packages to enhance your gameplay.',
+                        'info'
+                    );
+                }
+            }, 2000);
+        }
+
+        // Start the application
+        document.addEventListener('DOMContentLoaded', initializeApp);
+        
+        // Service Worker for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(err => {
+                    console.log('Service Worker registration failed:', err);
+                });
+            });
+        }
     </script>
 </body>
 </html>
+
